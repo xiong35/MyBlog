@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+
+class Question(models.Model):
+    category = models.CharField(max_length=7, default='关于我')
+    question = models.CharField(max_length=20)
+    answer = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.question
