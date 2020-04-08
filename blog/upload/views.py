@@ -1,3 +1,17 @@
-from django.shortcuts import render
+from django.http import JsonResponse
 
-# Create your views here.
+
+def thumbup(request):
+    pass
+
+
+def comment(request):
+    pass
+
+
+def image(request):
+    pass
+
+
+def question(request):
+    pass
