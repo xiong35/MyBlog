@@ -126,3 +126,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     r'C:\Users\xiong35\Desktop\workingspace\blog\static'
 ]
+
+MEDIA_ROOT = r'C:\Users\xiong35\Desktop\workingspace\blog\static\images'

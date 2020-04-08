@@ -4,7 +4,7 @@ from django.db import models
 
 
 class ArticalTag(models.Model):
-    tag_name = models.CharField(max_length=7, default='未分类')
+    tag_name = models.CharField(max_length=7)
 
     def __str__(self):
         return self.tag_name
@@ -19,7 +19,7 @@ class Trap(models.Model):
     solution = models.CharField(
         max_length=700, default='我想到了一个绝妙的解决方法, 但是这里位置太小, 我写不下...')
     last_update = models.DateTimeField(auto_now=True)
-    tags = models.ManyToManyField(ArticalTag)
+    tags = models.ManyToManyField(ArticalTag,)
 
     def __str__(self):
         return self.problem
