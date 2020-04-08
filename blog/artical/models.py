@@ -6,6 +6,9 @@ from django.db import models
 class ArticalTag(models.Model):
     tag_name = models.CharField(max_length=7, default='未分类')
 
+    def __str__(self):
+        return self.tag_name
+
 
 class Trap(models.Model):
     class Meta:
@@ -18,11 +21,18 @@ class Trap(models.Model):
     last_update = models.DateTimeField(auto_now=True)
     tags = models.ManyToManyField(ArticalTag)
 
+    def __str__(self):
+        return self.problem
+
 
 class Blog(models.Model):
     class Meta:
         ordering = ["last_update"]
     last_update = models.DateTimeField(auto_now=True)
     content = models.TextField(max_length=5000)
+    headline = models.CharField(max_length=20)
 
     tags = models.ManyToManyField(ArticalTag)
+
+    def __str__(self):
+        return self.headline
