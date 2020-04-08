@@ -124,7 +124,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    r'C:\Users\xiong35\Desktop\workingspace\blog\static'
+    r'C:\Users\xiong35\Desktop\workingspace\blog\static',
 ]
 
-MEDIA_ROOT = r'C:\Users\xiong35\Desktop\workingspace\blog\static\images'
+MEDIA_ROOT = r'C:\Users\xiong35\Desktop\workingspace\blog\static\image'

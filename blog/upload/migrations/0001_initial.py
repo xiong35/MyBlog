@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             name='ImageBed',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image_path', models.ImageField(upload_to=upload.models.hashed_image_path)),
+                ('image_path', models.ImageField(upload_to=upload.models.hashed_bed_image_path)),
                 ('origin_name', models.CharField(max_length=20)),
             ],
         ),
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
             name='MyImage',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image_path', models.ImageField(upload_to=upload.models.hashed_image_path)),
+                ('image_path', models.ImageField(upload_to=upload.models.hashed_mine_image_path)),
                 ('origin_name', models.CharField(max_length=20)),
                 ('authority', models.CharField(default='070', max_length=4)),
                 ('tags', models.ManyToManyField(to='upload.ImageTag')),

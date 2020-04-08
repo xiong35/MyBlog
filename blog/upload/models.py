@@ -12,25 +12,34 @@ class ImageTag(models.Model):
         return self.tag_name
 
 
-def hashed_image_path(instance, filename):
+def hashed_bed_image_path(instance, filename):
     name, suffix = filename.split('.')
     sha1 = hashlib.sha1()
     sha1.update(name.encode('utf-8'))
     hashed = sha1.hexdigest()
     year_month_day_ = time.strftime("%Y/%m/%d/", time.localtime())
-    return year_month_day_+hashed+'.'+suffix
+    return 'bed/'+year_month_day_+hashed+'.'+suffix
 
 
 class ImageBed(models.Model):
-    image_path = models.ImageField(upload_to=hashed_image_path)
+    image_path = models.ImageField(upload_to=hashed_bed_image_path)
     origin_name = models.CharField(max_length=20)
 
     def __str__(self):
         return self.origin_name
 
 
+def hashed_mine_image_path(instance, filename):
+    name, suffix = filename.split('.')
+    sha1 = hashlib.sha1()
+    sha1.update(name.encode('utf-8'))
+    hashed = sha1.hexdigest()
+    year_month_day_ = time.strftime("%Y/%m/%d/", time.localtime())
+    return 'mine/'+year_month_day_+hashed+'.'+suffix
+
+
 class MyImage(models.Model):
-    image_path = models.ImageField(upload_to=hashed_image_path)
+    image_path = models.ImageField(upload_to=hashed_mine_image_path)
     origin_name = models.CharField(max_length=20)
     tags = models.ManyToManyField(ImageTag)
     # 1: mid school
