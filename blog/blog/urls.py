@@ -23,5 +23,5 @@ urlpatterns = [
     path('home/', include(('home.urls', 'home'), namespace='home')),
     path('me/', include(('me.urls', 'me'), namespace='me')),
     path('my_app/', include(('my_app.urls', 'my_app'), namespace='my_app')),
-    path('up_load/', include(('up_load.urls', 'up_load'), namespace='up_load')),
+    path('upload/', include(('upload.urls', 'upload'), namespace='upload')),
 ]
