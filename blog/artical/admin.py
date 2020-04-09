@@ -12,6 +12,10 @@ class BlogAdmin(admin.ModelAdmin):
     list_display = ('headline',)
 
 
-admin.site.register(ArticalTag)
+class ArticalTagAdmin(admin.ModelAdmin):
+    list_display = ('tag_name', 'count')
+
+
+admin.site.register(ArticalTag, ArticalTagAdmin)
 admin.site.register(Trap, TrapAdmin)
 admin.site.register(Blog, BlogAdmin)

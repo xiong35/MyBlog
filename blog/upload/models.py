@@ -6,6 +6,7 @@ import hashlib
 
 
 class ImageTag(models.Model):
+    count = models.IntegerField(default=0)
     tag_name = models.CharField(max_length=7)
 
     def __str__(self):
