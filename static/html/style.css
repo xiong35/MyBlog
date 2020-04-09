@@ -1,0 +1,21 @@
+.icon {
+  color: #232629;
+  position: relative;
+}
+.icon li {
+  display: inline;
+}
+.bin_code {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  position: absolute;
+  max-width: none;
+  top: -170px;
+}
+@media (min-width: 768px) {
+  .bin_code {
+    top: 91px;
+  }
+}
