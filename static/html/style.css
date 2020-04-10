@@ -1,5 +1,4 @@
 .icon {
-  color: #232629;
   position: relative;
 }
 .icon li {
@@ -18,4 +17,41 @@
   .bin_code {
     top: 91px;
   }
+}
+.h-anim {
+  background-image: linear-gradient(49deg, #3aaef1 -14%, #d93eee 114%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hue 28s infinite linear;
+}
+@keyframes hue {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(-360deg);
+  }
+}
+@font-face {
+  font-family: "heading";
+  src: url("florenzioconditalic.woff.ttf");
+}
+.heading {
+  font-family: "heading";
+}
+.nav-aside {
+}
+.nl-anim:hover {
+  background-color: #0e35a1;
+  border-radius: 50px;
+  width: 6rem;
+  text-align: justify;
+}
+.particals p {
+  display: none;
+  position: fixed;
+  right: 100px;
+  top: 100px;
+  z-index: -2;
 }
