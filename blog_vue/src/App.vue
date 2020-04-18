@@ -1,14 +1,18 @@
 <template>
   <div id="app">
+    <blog-header/>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App',
-  components: {
-  }
-}
+  import BlogHeader from "views/header/Header";
+
+  export default {
+    name: "App",
+    components: {
+      BlogHeader
+    }
+  };
 </script>
 
 <style>
