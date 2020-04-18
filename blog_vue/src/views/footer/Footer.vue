@@ -3,7 +3,7 @@
     <div class="row">
       <contributer />
       <comment />
-      <contact-me />
+      <social />
     </div>
     <p class="small text-muted text-center">
       <i class="fa fa-copyright"></i> 2019-2020
@@ -14,14 +14,14 @@
 <script>
   import Contributer from "./components/Contributer";
   import Comment from "./components/Comment";
-  import ContactMe from "./components/ContactMe";
+  import Social from "./components/Social";
 
   export default {
     name: "Footer",
     components: {
       Contributer,
       Comment,
-      ContactMe
+      Social
     },
     data() {
       return {};

@@ -1,6 +1,6 @@
 <template>
   <div class="col-6 col-md-3 icon" id="contact-me">
-    <h5 class="pb-2 text-secondary">Contact Me!</h5>
+    <h5 class="pb-2 text-secondary">Social</h5>
     <ul class="list-unstyled text-justify">
       <li v-for="(item, index) in linkList" :key="index">
         <a v-if="item.link" :href="item.link">
