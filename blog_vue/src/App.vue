@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div @click="callPartical" id="app">
     <blog-header />
     <hr />
     <div class="container">
@@ -9,6 +9,7 @@
       </div>
       <blog-footer />
     </div>
+    <partical ref="partical"></partical>
   </div>
 </template>
 
@@ -17,6 +18,7 @@
   import BlogAside from "views/aside/Aside";
   import BlogArtical from "views/body/artical/Artical";
   import BlogFooter from "views/footer/Footer";
+  import Partical from "@/components/common/partical/Partical";
 
   export default {
     name: "App",
@@ -24,7 +26,13 @@
       BlogHeader,
       BlogAside,
       BlogArtical,
-      BlogFooter
+      BlogFooter,
+      Partical
+    },
+    methods: {
+      callPartical(event) {
+        this.$refs.partical.fatherClick(event);
+      }
     }
   };
 </script>
