@@ -1,30 +1,16 @@
 <template>
-  <div class="col-6 col-md-3 icon" id="contact-me">
-    <h5 class="pb-2 text-secondary">Social</h5>
-    <ul class="list-unstyled text-justify">
-      <li v-for="(item, index) in linkList" :key="index">
-        <a v-if="item.link" :href="item.link">
+  <div class="col-6 col-md-3 icon">
+    <h5 class="pb-2">Social</h5>
+    <ul class="list-unstyled text-justify" id="social">
+      <li v-for="(item, index) in linkList" :key="index" class="m-2">
+        <a v-if="item.link" :href="item.link" class="text-body">
           <i :class="item.iclass" class="fa"></i>
         </a>
-        <i v-else :class="item.iclass" class="fa"></i>
-        <img v-if="item.img" v-show="item.show" :src="item.img" alt="二维码" />
+        <i v-else :class="item.iclass" @click="iconClick($event,item)" class="fa"></i>
+        <transition name="fade" v-if="item.img">
+          <img v-show="item.show" :src="item.img" class="bin_code img-thumbnail" alt="二维码" />
+        </transition>
       </li>
-      <!-- <li>
-        <a href="https://github.com/xiong35">
-          <i
-            class="fa text-secondary fa-github m-2"
-            style="font-size:1.9rem;transform: translateY(2px);"
-          ></i>
-        </a>
-      </li>
-      <li>
-        <i class="fa text-secondary fa-qq m-2" style="font-size:1.6rem"></i>
-        <img src="q.jpg" alt="qq二维码" class="img-thumbnail bin_code" />
-      </li>
-      <li>
-        <i class="fa text-secondary fa-weixin m-2" style="font-size:1.6rem"></i>
-        <img style="display: none;" src="v.jpg" alt="微信二维码" class="img-thumbnail bin_code" />
-      </li>-->
     </ul>
   </div>
 </template>
@@ -59,10 +45,51 @@
     },
     computed: {},
     watch: {},
-    methods: {},
+    methods: {
+      iconClick(event, item) {
+        if (item.show) {
+          item.show = false;
+          return;
+        }
+        this.linkList.forEach(curLink => {
+          if (!curLink.link) {
+            curLink.show = false;
+          }
+        });
+        item.show = true;
+      }
+    },
     created() {},
     mounted() {}
   };
 </script>
 <style scoped>
+  #social li {
+    display: inline;
+    font-size: 1.6rem;
+  }
+
+  .bin_code {
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    position: absolute;
+    max-width: none;
+    top: -170px;
+  }
+  @media (min-width: 768px) {
+    .bin_code {
+      top: 91px;
+    }
+  }
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: all 0.3s ease;
+  }
+  .fade-enter,
+  .fade-leave-to {
+    transform: translateX(10px);
+    opacity: 0;
+  }
 </style>

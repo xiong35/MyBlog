@@ -1,5 +1,5 @@
 <template>
-  <footer class="pt-4 my-md-5 pt-md-5 border-top" style="width: 80%;margin: auto;">
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
     <div class="row">
       <contributer />
       <comment />
@@ -34,4 +34,5 @@
   };
 </script>
 <style scoped>
+
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <blog-header />
-    <hr width="70%" />
+    <hr />
     <div class="container">
       <div class="row">
         <blog-aside />
@@ -30,4 +30,21 @@
 </script>
 
 <style>
+  html {
+    font-size: 14px;
+  }
+  hr {
+    max-width: 1200px;
+    width: 80%;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  .container {
+    max-width: 1200px;
+  }
 </style>
