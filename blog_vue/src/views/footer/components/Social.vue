@@ -1,3 +1,5 @@
+// dependency:
+// font-awesome, bootstrap
 <template>
   <div class="col-6 col-md-3 icon">
     <h5 class="pb-2">Social</h5>

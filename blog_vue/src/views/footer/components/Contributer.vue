@@ -1,3 +1,5 @@
+// dependency: 
+// bootstrap
 <template>
   <div class="col-6 col-md-3" id="contributer">
     <h5>Contributers</h5>
