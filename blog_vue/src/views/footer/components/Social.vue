@@ -49,6 +49,7 @@
     watch: {},
     methods: {
       iconClick(event, item) {
+        // TODO : click the body SHOULD hide the image
         if (item.show) {
           item.show = false;
           return;
