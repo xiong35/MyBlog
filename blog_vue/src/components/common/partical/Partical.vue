@@ -17,6 +17,7 @@
   let interval = 10;
   let G = 0.3;
   let particalNum = 14;
+  let duringTime = 1000;
 
   export default {
     name: "Partical",
@@ -35,11 +36,10 @@
       fatherClick(event) {
         let x = event.clientX -2;
         let y = event.clientY - 25;
-        console.log(x, y);
         let added = 0;
         while (added < particalNum) {
           let vx = (Math.random() - 0.5) * V;
-          let vy = (Math.random() - 0.8) * V;
+          let vy = (Math.random() - 0.84) * V;
           let fontSize = (Math.random() + 0.28) * 35 + "px";
           let curPartical = { top: y, left: x, fontSize, vx, vy };
           this.particals.push(curPartical);
@@ -64,7 +64,7 @@
           }
           this.particals.splice(0, particalNum);
           this.isSpreading = false;
-        }, 700);
+        }, duringTime);
       },
       clear() {
         if (this.spreadTimer) {
