@@ -10,6 +10,7 @@
       <blog-footer />
     </div>
     <partical ref="partical"></partical>
+    <duck></duck>
   </div>
 </template>
 
@@ -19,6 +20,7 @@
   import BlogArtical from "views/body/artical/Artical";
   import BlogFooter from "views/footer/Footer";
   import Partical from "@/components/common/partical/Partical";
+  import Duck from '@/components/common/duck/Duck'
 
   export default {
     name: "App",
@@ -27,7 +29,8 @@
       BlogAside,
       BlogArtical,
       BlogFooter,
-      Partical
+      Partical,
+      Duck
     },
     methods: {
       callPartical(event) {
