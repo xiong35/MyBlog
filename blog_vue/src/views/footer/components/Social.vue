@@ -70,6 +70,18 @@
   #social li {
     display: inline;
     font-size: 1.6rem;
+    cursor: pointer;
+  }
+  #social i:hover {
+    animation: shake 0.3s ease;
+  }
+  @keyframes shake {
+    25% {
+      transform: rotate(20deg);
+    }
+    75% {
+      transform: rotate(-20deg);
+    }
   }
 
   .bin_code {
