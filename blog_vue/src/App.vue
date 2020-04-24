@@ -1,14 +1,17 @@
 <template>
   <div @click="callPartical" id="app">
-    <blog-header />
-    <hr />
-    <div class="container">
-      <div class="row">
-        <blog-aside />
-        <blog-artical />
+    <scroll class="wrapper" ref="scroll" :probe-type="3">
+      <blog-header />
+      <hr />
+      <div class="container">
+        <div class="row">
+          <blog-aside />
+          <blog-artical />
+        </div>
+        <blog-footer />
       </div>
-      <blog-footer />
-    </div>
+    </scroll>
+
     <partical ref="partical"></partical>
     <duck></duck>
   </div>
@@ -19,8 +22,10 @@
   import BlogAside from "views/aside/Aside";
   import BlogArtical from "views/body/artical/Artical";
   import BlogFooter from "views/footer/Footer";
+
+  import Scroll from "@/components/common/scroll/Scroll";
   import Partical from "@/components/common/partical/Partical";
-  import Duck from '@/components/common/duck/Duck'
+  import Duck from "@/components/common/duck/Duck";
 
   export default {
     name: "App",
@@ -29,6 +34,7 @@
       BlogAside,
       BlogArtical,
       BlogFooter,
+      Scroll,
       Partical,
       Duck
     },
