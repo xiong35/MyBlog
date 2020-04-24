@@ -13,7 +13,8 @@
     </scroll>
 
     <partical ref="partical"></partical>
-    <duck></duck>
+    <duck ref="duck"/>
+    <float-nav @totop="toTop" @kill-duck="killDuck"/>
   </div>
 </template>
 
@@ -26,6 +27,7 @@
   import Scroll from "@/components/common/scroll/Scroll";
   import Partical from "@/components/common/partical/Partical";
   import Duck from "@/components/common/duck/Duck";
+  import FloatNav from '@/components/context/floatNav/FloatNav'
 
   export default {
     name: "App",
@@ -36,11 +38,18 @@
       BlogFooter,
       Scroll,
       Partical,
-      Duck
+      Duck,
+      FloatNav
     },
     methods: {
       callPartical(event) {
         this.$refs.partical.fatherClick(event);
+      },
+      toTop(){
+        this.$refs.scroll.scrollTo()
+      },
+      killDuck(){
+        this.$refs.duck.duckClicked()
       }
     }
   };
