@@ -9,6 +9,7 @@
         :class="direction"
         :style="style"
         @click="duckClicked"
+        v-if="show"
       />
     </transition>
     <!-- <img src="~assets/img/kill_duck.jpg" class="kill" alt="kill duck" /> -->
@@ -26,7 +27,8 @@
         wanderTimmer: null,
         direction: "left",
         clientX: 10,
-        clientY: 10
+        clientY: 10,
+        show: true
       };
     },
     computed: {
@@ -42,13 +44,15 @@
         if ((newX - oldX) * dir2num[this.direction] < 0) {
           this.direction = this.direction == "left" ? "right" : "left";
         }
-        console.log(document.body.clientWidth);
       }
     },
     methods: {
       duckClicked() {
         this.direction = "hit";
         clearInterval(this.wanderTimmer);
+        setTimeout(() => {
+          this.show = false;
+        }, 500);
       },
       wander() {
         this.clientY =
@@ -59,7 +63,7 @@
     },
     created() {},
     mounted() {
-      this.wander;
+      this.wander();
       this.wanderTimmer = setInterval(this.wander, 750);
     }
   };
@@ -69,7 +73,7 @@
     width: 1.8rem;
     height: 1.8rem;
     transition: all 0.5s;
-    cursor: pointer;
+    cursor: crosshair;
     position: fixed;
   }
   .right {
