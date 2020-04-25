@@ -9,7 +9,7 @@
     </li>
     <li>
       <div class="nav-item">
-        <img src="~assets/img/kill_duck.jpg" @click="$emit('kill-duck')" alt="kill duck" />
+        <img src="~assets/img/kill_duck.png" @click="$emit('kill-duck')" alt="kill duck" />
       </div>
     </li>
     <li>
@@ -49,16 +49,11 @@
     margin: 0.2rem;
     border-radius: 2px;
     border: solid 1px;
-    /* background-image: linear-gradient(49deg, #3aaef19f -14%, #d93eeea2 114%);
-        animation: hue 3s infinite linear; */
+    transition: all 0.3s ease;
   }
-  @keyframes hue {
-    0% {
-      filter: hue-rotate(0deg);
-    }
-    100% {
-      filter: hue-rotate(-360deg);
-    }
+  li:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
   }
   .nav-item {
     width: 80%;
