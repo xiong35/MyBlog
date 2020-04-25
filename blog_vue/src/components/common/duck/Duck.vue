@@ -75,6 +75,7 @@
     transition: all 0.5s;
     cursor: crosshair;
     position: fixed;
+    z-index: 7;
   }
   .right {
     transform: rotateY(180deg);

@@ -3,7 +3,7 @@
 <template>
   <ul class="floatnav list-unstyled">
     <li>
-      <div class="nav-item">
+      <div class="nav-item" @click="$emit('toggle-f-nav')">
         <i class="fa fa-bars"></i>
       </div>
     </li>
@@ -13,7 +13,7 @@
       </div>
     </li>
     <li>
-      <div class="nav-item" @click="$emit('totop')">
+      <div class="nav-item" @click="$emit('to-top')">
         <i class="fa fa-angle-double-up"></i>
       </div>
     </li>
@@ -41,14 +41,16 @@
     bottom: 3vmin;
   }
   li {
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 2.1rem;
+    width: 2.1rem;
     text-align: center;
     position: relative;
+    background-color: rgba(255, 255, 255, 0.7);
     margin: 0.2rem;
     border-radius: 2px;
-    background-image: linear-gradient(49deg, #3aaef19f -14%, #d93eeea2 114%);
-    animation: hue 3s infinite linear;
+    border: solid 1px;
+    /* background-image: linear-gradient(49deg, #3aaef19f -14%, #d93eeea2 114%);
+        animation: hue 3s infinite linear; */
   }
   @keyframes hue {
     0% {

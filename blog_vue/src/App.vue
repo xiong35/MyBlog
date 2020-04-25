@@ -14,7 +14,7 @@
 
     <partical ref="partical"></partical>
     <duck ref="duck"/>
-    <float-nav @totop="toTop" @kill-duck="killDuck"/>
+    <float-nav @to-top="toTop" @kill-duck="killDuck"/>
   </div>
 </template>
 
