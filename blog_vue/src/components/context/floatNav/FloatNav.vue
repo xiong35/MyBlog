@@ -44,7 +44,8 @@
     height: 2.5rem;
     width: 2.5rem;
     text-align: center;
-    margin: 0.5vmin;
+    position: relative;
+    margin: 0.2rem;
     border-radius: 2px;
     background-image: linear-gradient(49deg, #3aaef19f -14%, #d93eeea2 114%);
     animation: hue 3s infinite linear;
