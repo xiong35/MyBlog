@@ -32,8 +32,7 @@
     background-color: rgb(255, 255, 255);
     text-align: center;
     position: relative;
-    padding: 7%;
-    z-index: -2;
+    padding: 8%;
   }
   #border-circle {
     border-radius: 2000px;
@@ -68,14 +67,24 @@
       transform: rotate(360deg);
     }
   }
+  #mask-circle {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    border-radius: 2000px;
+    transform: scale(1.27, 1.27);
+    -webkit-transform: scale(1.27, 1.27);
+    -ms-transform: scale(1.27, 1.27);
+    -moz-transform: scale(1.27, 1.27);
+    -o-transform: scale(1.27, 1.27);
+  }
   #portrait {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 7.8vw;
-    height: 7.8vw;
+    width: 7vw;
+    height: 7vw;
     border-radius: 2000px;
-    border: #fff solid 0.6vw;
   }
 </style>
