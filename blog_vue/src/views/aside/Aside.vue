@@ -1,5 +1,6 @@
 <template>
-  <div title="nav" id="aside" class="d-none d-md-block col-3 pl-5">
+  <div id="aside" class="d-none d-md-block col-3 pl-5">
+    <me></me>
     <ul class="list-unstyled nav-aside">
       <li>
         <h5>some</h5>
@@ -30,9 +31,12 @@
 </template>
 
 <script>
+  import Me from "./components/Me";
   export default {
     name: "Aside",
-    components: {},
+    components: {
+      Me
+    },
     data() {
       return {};
     },
@@ -44,4 +48,7 @@
   };
 </script>
 <style scoped>
+  #aside {
+    position: relative;
+  }
 </style>
