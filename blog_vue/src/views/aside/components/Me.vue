@@ -2,9 +2,12 @@
 // 
 <template>
   <div id="me">
-    <div id="mask">
-      <div id="portrait"></div>
+    <div id="border-circle">
+      <div id="rotate-box">
+        <div id="mask-circle"></div>
+      </div>
     </div>
+    <img id="portrait" src="~assets/img/portrait.jpg" alt="portrait" />
   </div>
 </template>
 
@@ -26,17 +29,53 @@
   #me {
     width: 100%;
     height: auto;
-    background-color: #000;
+    background-color: rgb(255, 255, 255);
     text-align: center;
     position: relative;
     padding: 7%;
+    z-index: -2;
   }
-  #mask {
+  #border-circle {
     border-radius: 2000px;
-    width: 80%;
-    padding-top: 80%;
-    height: auto;
+    width: 8vw;
+    height: 8vw;
     margin: auto;
-    background-color: #0f0;
+    background-color: #fff;
+    border: 1px solid #000;
+    padding: 0.5vw;
+  }
+  #rotate-box {
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    height: 100%;
+    border: #fff solid 0.38vw;
+    animation: rotate 3s infinite linear;
+  }
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(90deg);
+    }
+    38% {
+      transform: rotate(180deg);
+    }
+    63% {
+      transform: rotate(270deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  #portrait {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7.8vw;
+    height: 7.8vw;
+    border-radius: 2000px;
+    border: #fff solid 0.6vw;
   }
 </style>
