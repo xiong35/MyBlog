@@ -87,4 +87,14 @@
     height: 7vw;
     border-radius: 2000px;
   }
+  @media (min-width: 1200px){
+    #portrait{
+      width:84px;
+      height: 84px;
+    }
+    #border-circle{
+      width: 96px;
+      height: 96px;
+    }
+  }
 </style>
