@@ -2,9 +2,16 @@
 // 
 <template>
   <ul class="list-unstyled nav-aside pl-4 pt-2">
-    <li v-for="(item, index) in links" v-show="item.show" :key="index">
+    <li v-for="(item, index) in links" :key="index">
       <h4 class="nav-class" href="item.href">{{item.name}}</h4>
-      <ul ><li v-for="(navItem, index) in items" :key="index"></li></ul>
+      <ul>
+        <li
+          v-for="(navItem, index) in item.items"
+          v-show="navItem.show"
+          :href="navItem.href"
+          :key="index"
+        >{{navItem.name}}</li>
+      </ul>
     </li>
   </ul>
 </template>
@@ -16,7 +23,7 @@
       href: "#",
       items: [
         { name: "iiiii", href: "#", show: true },
-        { name: "iiiii", href: "#", show: true },
+        { name: "iiiii", href: "#", show: false },
         { name: "iiiii", href: "#", show: true }
       ]
     },
