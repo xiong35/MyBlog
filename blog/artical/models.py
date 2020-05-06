@@ -10,6 +10,11 @@ class ArticalTag(models.Model):
     def __str__(self):
         return self.tag_name
 
+    def taged(self):
+        # TODO 优化修改操作, 减小查询次数
+        self.count += 1
+        self.save(update_fields=['count'])
+
 
 class Trap(models.Model):
     class Meta:
@@ -33,7 +38,7 @@ class Blog(models.Model):
     content = models.TextField(max_length=5000)
     headline = models.CharField(max_length=20)
 
-    tags = models.ManyToManyField(ArticalTag, null=True)
+    tags = models.ManyToManyField(ArticalTag)
 
     def __str__(self):
         return self.headline

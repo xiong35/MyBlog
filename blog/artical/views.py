@@ -37,6 +37,7 @@ class Blog(View):
         tags = ArticalTag.objects.filter(tag_name__in=info.get('tags'))
         for tag in tags:
             record.tags.add(tag)
+            tag.taged()
 
         return JsonResponse({'status': 200})
 
