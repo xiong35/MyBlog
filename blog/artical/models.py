@@ -33,7 +33,7 @@ class Blog(models.Model):
     content = models.TextField(max_length=5000)
     headline = models.CharField(max_length=20)
 
-    tags = models.ManyToManyField(ArticalTag)
+    tags = models.ManyToManyField(ArticalTag, null=True)
 
     def __str__(self):
         return self.headline
