@@ -16,7 +16,9 @@ class Blog(View):
         get_id = request.GET.get('id', None)
         if get_id:
             qs = BlogModel.objects.filter(pk=get_id).values('content')
-            return JsonResponse({'status': 200, 'content': list(qs)[0]})
+            if qs:
+                return JsonResponse({'status': 200, 'content': list(qs)[0]})
+            return JsonResponse({"status": 404})
 
         json_data = [
             {'id': b.id,
@@ -45,10 +47,41 @@ class Blog(View):
 class Trap(View):
 
     def get(self, request):
-        return JsonResponse({1: "12"})
+
+        get_id = request.GET.get('id', None)
+        if get_id:
+            qs = TrapModel.objects.filter(pk=get_id).values('solution')
+            if qs:
+                return JsonResponse({'status': 200, 'solution': list(qs)[0]})
+            return JsonResponse({"status": 404})
+
+        json_data = [
+            {'id': b.id,
+             'tags': [a.tag_name for a in b.tags.all()],
+             'last_update':b.last_update,
+             'context':b.context,
+             'problem':b.problem} for b in TrapModel.objects.prefetch_related('tags')
+        ]
+
+        return JsonResponse({"status": 200, "data": json_data})
 
     def post(self, request):
-        return JsonResponse({})
+        json_data = json.loads(request.body)
+
+        tag_names = json_data.get("tag_names")
+        context = json_data.get("context")
+        problem = json_data.get("problem")
+        solution = json_data.get("solution")
+
+        record = TrapModel(context=context, problem=problem, solution=solution)
+        record.save()
+        tags = ArticalTag.objects.filter(tag_name__in=tag_names)
+
+        for tag in tags:
+            record.tags.add(tag)
+            tag.taged()
+
+        return JsonResponse({"status": 200})
 
 
 class Tag(View):
