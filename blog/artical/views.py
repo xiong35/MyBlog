@@ -26,6 +26,11 @@ class Blog(View):
              'last_update':b.last_update,
              'headline':b.headline} for b in BlogModel.objects.prefetch_related('tags')
         ]
+        # TODO move sort to front
+
+        json_data = sorted(
+            json_data, key=lambda i: i['last_update'], reverse=True)
+
         return JsonResponse({'status': 200, 'data': json_data})
 
     def post(self, request):
@@ -62,6 +67,10 @@ class Trap(View):
              'context':b.context,
              'problem':b.problem} for b in TrapModel.objects.prefetch_related('tags')
         ]
+        # TODO move sort to front
+
+        json_data = sorted(
+            json_data, key=lambda i: i['last_update'], reverse=True)
 
         return JsonResponse({"status": 200, "data": json_data})
 
