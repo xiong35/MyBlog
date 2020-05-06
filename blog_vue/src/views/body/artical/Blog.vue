@@ -2,7 +2,7 @@
 // 
 <template>
   <div class="blog">
-    <div class="blog-brief my-2" v-for="(blog, index) in blogs" :key="index">
+    <div class="blog-brief my-2" v-for="(blog, index) in filteredBlogs" :key="index">
       <h3>{{blog.headline}}</h3>
       <ul class="list-unstyled list-inline">
         <li class="list-inline-item m-1" v-for="(tag, index) in blog.tags" :key="index">
@@ -25,10 +25,25 @@
     components: {},
     data() {
       return {
-        blogs: []
+        blogs: [],
+        tags: ["2333","test"]
       };
     },
-    computed: {},
+    computed: {
+      filteredBlogs() {
+        return this.blogs.filter((value, index, array) => {
+          if (this.tags.length == 0) {
+            return true;
+          }
+          for (let tag of this.tags) {
+            if (value.tags.indexOf(tag) != -1) {
+              return true;
+            }
+          }
+          return false;
+        });
+      }
+    },
     watch: {},
     methods: {
       parseTime,
