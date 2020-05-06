@@ -54,7 +54,13 @@ class Trap(View):
 class Tag(View):
 
     def get(self, request):
-        return JsonResponse({1: "12"})
+        qs = ArticalTag.objects.values()
+        return JsonResponse({"status": 200, "data": list(qs)})
 
     def post(self, request):
-        return JsonResponse({})
+        tag_names = json.loads(request.body).get("tag_names")
+        for tag_name in tag_names:
+            tag = ArticalTag(tag_name=tag_name)
+            tag.save()
+
+        return JsonResponse({"status": 200})
