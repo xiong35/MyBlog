@@ -39,6 +39,8 @@
 </template>
 
 <script>
+  import { getBlog } from "network/artical";
+
   export default {
     name: "Artical",
     components: {},
@@ -48,7 +50,11 @@
     computed: {},
     watch: {},
     methods: {},
-    created() {},
+    created() {
+      getBlog().then(response => {
+        console.log(response);
+      });
+    },
     mounted() {}
   };
 </script>

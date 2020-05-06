@@ -1,18 +1,19 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-Vue.use(VueRouter);
 
-// const someRoute = () => import("views/someRoute/someRoute");
+const Artical = () => import("views/body/artical/Artical");
+
+Vue.use(VueRouter);
 
 const routes = [
   {
     path: "",
-    redirect: "/home"
+    redirect: "/artical"
   },
-  // {
-  //   path: "/home",
-  //   component: someRoute
-  // },
+  {
+    path: "/artical",
+    component: Artical
+  }
 ];
 
 const router = new VueRouter({

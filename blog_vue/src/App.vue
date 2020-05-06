@@ -6,15 +6,15 @@
       <div class="container">
         <div class="row">
           <blog-aside />
-          <blog-artical />
+          <router-view />
         </div>
         <blog-footer />
       </div>
     </scroll>
 
     <partical ref="partical"></partical>
-    <duck ref="duck"/>
-    <float-nav @to-top="toTop" @kill-duck="killDuck"/>
+    <duck ref="duck" />
+    <float-nav @to-top="toTop" @kill-duck="killDuck" />
   </div>
 </template>
 
@@ -27,7 +27,7 @@
   import Scroll from "@/components/common/scroll/Scroll";
   import Partical from "@/components/common/partical/Partical";
   import Duck from "@/components/common/duck/Duck";
-  import FloatNav from '@/components/context/floatNav/FloatNav'
+  import FloatNav from "@/components/context/floatNav/FloatNav";
 
   export default {
     name: "App",
@@ -45,11 +45,11 @@
       callPartical(event) {
         this.$refs.partical.fatherClick(event);
       },
-      toTop(){
-        this.$refs.scroll.scrollTo()
+      toTop() {
+        this.$refs.scroll.scrollTo();
       },
-      killDuck(){
-        this.$refs.duck.duckClicked()
+      killDuck() {
+        this.$refs.duck.duckClicked();
       }
     }
   };
