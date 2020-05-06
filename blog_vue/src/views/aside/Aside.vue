@@ -1,5 +1,5 @@
 <template>
-  <div id="aside" class="d-none d-md-block col-3 pl-5">
+  <div id="aside" class="d-none d-md-block col-3">
     <me></me>
     <hr />
     <nav-aside></nav-aside>
