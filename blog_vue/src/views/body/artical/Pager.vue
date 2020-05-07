@@ -75,6 +75,7 @@
   .btn.cur-page {
     border: solid 1px #007bff;
     background-color: #1687ff;
+    box-shadow: 0 0 3px #007bff80;
     color: #fff;
     font-weight: bold;
   }
