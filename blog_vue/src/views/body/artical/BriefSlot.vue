@@ -1,19 +1,21 @@
 // dependency: 
 // 
 <template>
-  <div class="back-border my-2">
-    <div class="brief p-2">
-      <slot></slot>
-      <ul class="list-unstyled list-inline">
-        <li class="list-inline-item m-1" v-for="(tag, index) in blog.tags" :key="index">
-          <div class="tag">{{tag}}</div>
-        </li>
-      </ul>
-      <div class="time text-secondary">
-        <span>上次修改于：{{getFmtDate(blog.last_update)}}</span>
+  <router-link tag="div" :to="{path: 'blog/'+ blog.id}">
+    <div class="back-border my-2">
+      <div class="brief p-2">
+        <slot></slot>
+        <ul class="list-unstyled list-inline">
+          <li class="list-inline-item m-1" v-for="(tag, index) in blog.tags" :key="index">
+            <div class="tag">{{tag}}</div>
+          </li>
+        </ul>
+        <div class="time text-secondary">
+          <span>上次修改于：{{getFmtDate(blog.last_update)}}</span>
+        </div>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>

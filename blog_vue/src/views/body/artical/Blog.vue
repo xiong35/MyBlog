@@ -2,7 +2,11 @@
 // 
 <template>
   <div class="blog">
-    <brief-slot v-for="(blog, index) in pagedBlogs" :key="index" :blog="blog">
+    <brief-slot
+      v-for="(blog, index) in pagedBlogs"
+      :key="index"
+      :blog="blog"
+    >
       <h3>{{blog.headline}}</h3>
     </brief-slot>
     <pager @page-change="changePage" :pageNum="pageNum" :curIndex="curIndex"></pager>
