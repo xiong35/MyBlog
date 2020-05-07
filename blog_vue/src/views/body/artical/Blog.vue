@@ -15,23 +15,19 @@
   import BriefSlot from "./BriefSlot";
   import Pager from "./Pager";
 
+  import { PagerMixin } from "./PagerMixin";
+
   export default {
+    mixins: [PagerMixin],
     name: "Blog",
     components: {
       BriefSlot,
       Pager
     },
-    props: {
-      perPage: {
-        type: Number,
-        default: 7
-      }
-    },
     data() {
       return {
         blogs: [],
-        tags: ["2333", "test"],
-        curIndex: 0
+        tags: []
       };
     },
     computed: {
@@ -47,22 +43,12 @@
           }
           return false;
         });
-      },
-      pagedBlogs() {
-        let begin = this.curIndex * this.perPage;
-        return this.filteredBlogs.slice(begin, begin + this.perPage);
-      },
-      pageNum() {
-        return Math.ceil(this.filteredBlogs.length / this.perPage);
       }
     },
     watch: {},
     methods: {
       getFmtDate(dataStr) {
         return dateFormat("YYYY年mm月dd日 HH:MM", this.parseTime(dataStr));
-      },
-      changePage(pageIndex) {
-        this.curIndex = pageIndex;
       }
     },
     created() {
