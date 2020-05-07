@@ -8,7 +8,7 @@
         alt="a little duck"
         :class="direction"
         :style="style"
-        @click="duckClicked"
+        @click="$store.commit('toggleDuck')"
         v-show="show"
       />
     </transition>
@@ -44,11 +44,9 @@
         if ((newX - oldX) * dir2num[this.direction] < 0) {
           this.direction = this.direction == "left" ? "right" : "left";
         }
-      }
-    },
-    methods: {
-      duckClicked() {
-        if (this.alive) {
+      },
+      "$store.state.duckAlive": function(newState, oldState) {
+        if (!newState) {
           this.direction = "hit";
           clearInterval(this.wanderTimmer);
           setTimeout(() => {
@@ -58,10 +56,11 @@
           this.show = true;
           this.direction = "left";
           this.wanderTimmer = setInterval(this.wander, 750);
-          this.wander();
         }
-        this.alive = !this.alive
-      },
+        this.alive = !this.alive;
+      }
+    },
+    methods: {
       wander() {
         this.clientY =
           Math.random() * (document.documentElement.clientHeight - 20);

@@ -7,10 +7,15 @@
         <i class="fa fa-bars"></i>
       </div>
     </li>
-    <li @click="toggleDuck" :class="{'kill-duck':duckAlive}">
+    <li @click="toggleDuck" :class="{'kill-duck':$store.state.duckAlive}">
       <div class="nav-item">
         <transition name="toggle" mode="out-in">
-          <img v-if="duckAlive" src="~assets/img/kill_duck.png" key="kill" alt="kill duck" />
+          <img
+            v-if="$store.state.duckAlive"
+            src="~assets/img/kill_duck.png"
+            key="kill"
+            alt="kill duck"
+          />
           <img v-else src="~assets/img/duck.png" key="summon" alt="summon duck" />
         </transition>
       </div>
@@ -28,16 +33,13 @@
     name: "FloatNav",
     components: {},
     data() {
-      return {
-        duckAlive: true
-      };
+      return {};
     },
     computed: {},
     watch: {},
     methods: {
       toggleDuck() {
-        this.$emit("toggle-duck");
-        this.duckAlive = !this.duckAlive;
+        this.$store.commit("toggleDuck");
       }
     },
     created() {},
