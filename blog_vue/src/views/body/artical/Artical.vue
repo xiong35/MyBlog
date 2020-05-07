@@ -1,6 +1,6 @@
 <template>
   <div class="col-12 col-md-9" id="artical">
-    <div class="blog-trap"></div>
+    <div class="chose-tab"></div>
     <div class="headlines">
       <blog></blog>
     </div>
@@ -30,6 +30,10 @@
 <style>
   #artical {
     width: 100%;
-    margin: auto;
+  }
+  .chose-tab {
+    width: 100%;
+    height: auto;
+    background-color: #123;
   }
 </style>

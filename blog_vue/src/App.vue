@@ -4,7 +4,7 @@
       <blog-header />
       <hr />
       <div class="container">
-        <div class="row">
+        <div class="row ">
           <blog-aside />
           <router-view />
         </div>
