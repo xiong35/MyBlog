@@ -83,6 +83,13 @@
     padding: 2px 10px 4px 10px;
     transition: all 1s ease;
   }
+  .tag:hover {
+    box-shadow: 0 0 5px #007bff71;
+    background-color: #0da5fd;
+    color: #fff !important;
+    transition: all 0.3s ease;
+    border-color: #0da5fd !important;
+  }
   .blog-trap {
     height: 4rem;
     width: 100%;
