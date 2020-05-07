@@ -14,7 +14,7 @@
 
     <partical ref="partical"></partical>
     <duck ref="duck" />
-    <float-nav @to-top="toTop" @kill-duck="killDuck" />
+    <float-nav @to-top="toTop" @toggle-duck="toggleDuck" />
   </div>
 </template>
 
@@ -48,7 +48,7 @@
       toTop() {
         this.$refs.scroll.scrollTo();
       },
-      killDuck() {
+      toggleDuck() {
         this.$refs.duck.duckClicked();
       }
     }
@@ -72,5 +72,20 @@
 
   .container {
     max-width: 1200px;
+  }
+  ::selection {
+    color: #ffffff;
+    background-color: #41afee;
+    text-shadow: none;
+  }
+  ::-moz-selection {
+    color: #ffffff;
+    background-color: #41afee;
+    text-shadow: none;
+  }
+  ::-webkit-selection {
+    color: #ffffff;
+    background-color: #41afee;
+    text-shadow: none;
   }
 </style>

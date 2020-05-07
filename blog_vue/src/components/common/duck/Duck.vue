@@ -9,10 +9,9 @@
         :class="direction"
         :style="style"
         @click="duckClicked"
-        v-if="show"
+        v-show="show"
       />
     </transition>
-    <!-- <img src="~assets/img/kill_duck.jpg" class="kill" alt="kill duck" /> -->
   </div>
 </template>
 
@@ -28,7 +27,8 @@
         direction: "left",
         clientX: 10,
         clientY: 10,
-        show: true
+        show: true,
+        alive: true
       };
     },
     computed: {
@@ -48,11 +48,19 @@
     },
     methods: {
       duckClicked() {
-        this.direction = "hit";
-        clearInterval(this.wanderTimmer);
-        setTimeout(() => {
-          this.show = false;
-        }, 500);
+        if (this.alive) {
+          this.direction = "hit";
+          clearInterval(this.wanderTimmer);
+          setTimeout(() => {
+            this.show = false;
+          }, 500);
+        } else {
+          this.show = true;
+          this.direction = "left";
+          this.wanderTimmer = setInterval(this.wander, 750);
+          this.wander();
+        }
+        this.alive = !this.alive
       },
       wander() {
         this.clientY =
@@ -72,7 +80,7 @@
   #duck img {
     width: 1.8rem;
     height: 1.8rem;
-    transition: all 0.5s;
+    transition: all 0.5s ease;
     cursor: crosshair;
     position: fixed;
     z-index: 7;
@@ -83,11 +91,5 @@
   .hit {
     transform: rotateY(700deg);
     opacity: 0;
-  }
-  .kill {
-    bottom: 40px;
-    right: 40px;
-    width: 3rem;
-    height: 3rem;
   }
 </style>

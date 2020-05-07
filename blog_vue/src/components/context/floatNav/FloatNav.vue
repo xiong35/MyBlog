@@ -2,18 +2,21 @@
 // better scroll, font-awesome
 <template>
   <ul class="floatnav list-unstyled">
-    <li>
-      <div class="nav-item" @click="$emit('toggle-f-nav')">
+    <li @click="$emit('toggle-f-nav')">
+      <div class="nav-item">
         <i class="fa fa-bars"></i>
       </div>
     </li>
-    <li>
+    <li @click="toggleDuck" :class="{'kill-duck':duckAlive}">
       <div class="nav-item">
-        <img src="~assets/img/kill_duck.png" @click="$emit('kill-duck')" alt="kill duck" />
+        <transition name="toggle" mode="out-in">
+          <img v-if="duckAlive" src="~assets/img/kill_duck.png" key="kill" alt="kill duck" />
+          <img v-else src="~assets/img/duck.png" key="summon" alt="summon duck" />
+        </transition>
       </div>
     </li>
-    <li>
-      <div class="nav-item" @click="$emit('to-top')">
+    <li @click="$emit('to-top')">
+      <div class="nav-item">
         <i class="fa fa-angle-double-up"></i>
       </div>
     </li>
@@ -25,15 +28,23 @@
     name: "FloatNav",
     components: {},
     data() {
-      return {};
+      return {
+        duckAlive: true
+      };
     },
     computed: {},
     watch: {},
-    methods: {},
+    methods: {
+      toggleDuck() {
+        this.$emit("toggle-duck");
+        this.duckAlive = !this.duckAlive;
+      }
+    },
     created() {},
     mounted() {}
   };
 </script>
+
 <style scoped>
   ul {
     position: fixed;
@@ -52,8 +63,9 @@
     transition: all 0.3s ease;
   }
   li:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
+    border: solid 1px #007bff;
+    color: #007bff;
+    box-shadow: 0 0 3px #007bff66;
   }
   .nav-item {
     width: 80%;
@@ -73,5 +85,17 @@
   img {
     width: 100%;
     height: 100%;
+  }
+  .kill-duck:hover {
+    border: solid 1px #e93342;
+    box-shadow: 0 0 3px #e933428f;
+  }
+  .toggle-enter-active,
+  .toggle-leave-active {
+    transition: opacity 0.2s;
+  }
+  .toggle-enter,
+  .toggle-leave-to {
+    opacity: 0;
   }
 </style>

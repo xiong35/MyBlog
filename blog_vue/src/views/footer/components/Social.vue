@@ -66,14 +66,19 @@
     mounted() {}
   };
 </script>
+
 <style scoped>
   #social li {
     display: inline;
     font-size: 1.6rem;
     cursor: pointer;
   }
+  #social i {
+    transition: all 0.3s ease;
+  }
   #social i:hover {
     animation: shake 0.3s ease;
+    color: #288bf5;
   }
   @keyframes shake {
     25% {
@@ -106,5 +111,8 @@
   .fade-leave-to {
     transform: translateX(10px);
     opacity: 0;
+  }
+  .fa-github{
+    font-size:1.8rem
   }
 </style>
