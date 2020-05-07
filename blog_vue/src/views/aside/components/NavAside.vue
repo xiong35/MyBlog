@@ -97,7 +97,7 @@
   }
   .nav-aside-li:hover .nav-aside-div {
     color: #007bff;
-    box-shadow: 0 0 10px #209bff86;
+    box-shadow: 0 0 7px #209bff86;
   }
   .nav-aside-div {
     transition: all 0.7s ease;
