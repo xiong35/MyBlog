@@ -4,7 +4,6 @@
   <div class="briefslot">
     <div class="brief py-2 my-2">
       <slot></slot>
-      <!-- <h3>{{blog.headline}}</h3> -->
       <ul class="list-unstyled list-inline">
         <li class="list-inline-item m-1" v-for="(tag, index) in blog.tags" :key="index">
           <div class="tag">{{tag}}</div>
