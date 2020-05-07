@@ -18,12 +18,10 @@
       }
     },
     data() {
-      return {
-        scrollManager: null
-      };
+      return {};
     },
     mounted() {
-      this.scrollManager = new BScroll(this.$refs.wrapper, {
+      let scrollManager = new BScroll(this.$refs.wrapper, {
         scrollY: true,
         click: true,
         probeType: this.probeType,
@@ -31,16 +29,13 @@
         preventDefault: false,
         bounceTime: 400
       });
-      this.scrollManager.on("scroll", position => {
-        // emit an event with postion : {x: , y: }
-        this.$emit("scroll", position);
-      });
+      this.$store.commit("setScroll", scrollManager);
+      // this.scrollManager.on("scroll", position => {
+      //   // emit an event with postion : {x: , y: }
+      //   this.$emit("scroll", position);
+      // });
     },
-    methods: {
-      scrollTo(x = 0, y = 0, time = 300) {
-        this.scrollManager.scrollTo(x, y, time);
-      }
-    }
+    methods: {}
   };
 </script>
 <style scoped>

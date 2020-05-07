@@ -20,7 +20,7 @@
         </transition>
       </div>
     </li>
-    <li @click="$emit('to-top')">
+    <li @click="$store.dispatch('scrollTo')">
       <div class="nav-item">
         <i class="fa fa-angle-double-up"></i>
       </div>

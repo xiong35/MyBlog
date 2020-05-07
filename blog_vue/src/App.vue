@@ -14,7 +14,7 @@
 
     <partical ref="partical"></partical>
     <duck ref="duck" />
-    <float-nav @to-top="toTop" @toggle-duck="toggleDuck" />
+    <float-nav />
   </div>
 </template>
 
@@ -44,12 +44,6 @@
     methods: {
       callPartical(event) {
         this.$refs.partical.fatherClick(event);
-      },
-      toTop() {
-        this.$refs.scroll.scrollTo();
-      },
-      toggleDuck() {
-        this.$refs.duck.duckClicked();
       }
     }
   };

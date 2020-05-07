@@ -4,10 +4,13 @@ import vuex from "vuex";
 // import mutations from "./mutations";
 // import actions from "./actions";
 
+
+
 Vue.use(vuex);
 
 const state = {
-  duckAlive: true
+  duckAlive: true,
+  scrollManager: null
 }
 
 const store = new vuex.Store({
@@ -18,12 +21,23 @@ const store = new vuex.Store({
     someMethod(state, payload) { },
     toggleDuck(state) {
       state.duckAlive = !state.duckAlive
+    },
+    setScroll(state, payload) {
+      state.scrollManager = payload
     }
   },
   // use store.diapatch('methodName', payload)
   // context == this, use context.state
   actions: {
-    someMethod(context, payload) { }
+    someMethod(context, payload) { },
+    scrollTo(context, payload) {
+      if (payload) {
+        var { x, y, time } = payload
+      } else {
+        var [x, y, time] = [0, 0, 300]
+      }
+      context.state.scrollManager.scrollTo(x, y, time);
+    }
   }
 });
 

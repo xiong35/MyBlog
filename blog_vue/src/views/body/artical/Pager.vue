@@ -3,11 +3,7 @@
 <template>
   <ul class="pager list-unstyled my-3">
     <li class="turn-left list-inline-item">
-      <button
-        class="turn-box btn"
-        :disabled="disabled('left')"
-        @click="$emit('page-change',curIndex-1)"
-      >
+      <button class="turn-box btn" :disabled="disabled('left')" @click="btnClick(curIndex - 1)">
         <i class="fa fa-angle-double-left"></i>
       </button>
     </li>
@@ -15,15 +11,11 @@
       <button
         class="pager-box btn"
         :class="{'cur-page':index==curIndex}"
-        @click="$emit('page-change',index)"
+        @click="btnClick(index)"
       >{{index+1}}</button>
     </li>
     <li class="turn-right list-inline-item">
-      <button
-        class="turn-box btn"
-        :disabled="disabled('right')"
-        @click="$emit('page-change',curIndex+1)"
-      >
+      <button class="turn-box btn" :disabled="disabled('right')" @click="btnClick(curIndex + 1)">
         <i class="fa fa-angle-double-right"></i>
       </button>
     </li>
@@ -51,7 +43,12 @@
       }
     },
     watch: {},
-    methods: {},
+    methods: {
+      btnClick(index) {
+        this.$emit("page-change", index);
+        this.$store.dispatch("scrollTo");
+      }
+    },
     created() {},
     mounted() {}
   };
