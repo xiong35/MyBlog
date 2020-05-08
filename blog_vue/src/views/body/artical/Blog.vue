@@ -3,6 +3,7 @@
 <template>
   <div class="blog">
     <transition-group name="brief-list" tag="ul" class="list-unstyled">
+      <div class="placeholder brief-item m-5 text-secondary" v-if="pagedBlogs.length==0" key="placeholder">没有文章呢QwQ</div>
       <brief-slot class="brief-item" v-for="(blog, index) in pagedBlogs" :key="index" :blog="blog">
         <h3>{{blog.headline}}</h3>
       </brief-slot>
@@ -35,15 +36,15 @@
     computed: {
       filteredBlogs() {
         return this.blogs.filter((value, index, array) => {
-          if (this.$store.state.activeTags.length == 0) {
-            return true;
-          }
+          // if (this.$store.state.activeTags.length == 0) {
+          //   return true;
+          // }
           for (let tag of this.$store.state.activeTags) {
-            if (value.tags.indexOf(tag) != -1) {
-              return true;
+            if (value.tags.indexOf(tag) == -1) {
+              return false;
             }
           }
-          return false;
+          return true;
         });
       }
     },
@@ -71,4 +72,8 @@
     transform: translate(30px, 20px);
   }
   /* TODO change to one by one animation  */
+  .placeholder {
+    margin: auto;
+    text-align: center;
+  }
 </style>
