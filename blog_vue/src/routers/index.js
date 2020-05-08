@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+const Visiter = () => import("views/Visiter")
+
 const Artical = () => import("views/body/artical/Artical");
 const Blog = () => import("views/body/artical/BlogContent")
 const Admin = () => import("views/admin/Admin")
@@ -17,34 +19,40 @@ const routes = [
     redirect: "/artical"
   },
   {
-    path: "/blog/:blogId",
-    component: Blog
-  }
-  ,
-  {
-    path: "/artical",
-    component: Artical
-  },
-  {
-    path: "/profile",
-    component: NotYet
-  },
-  {
-    path: "/works",
-    component: NotYet
-  },
-  {
-    path: "/resume",
-    component: NotYet
-  },
-  {
     path: '/admin',
     component: Admin
   },
   {
-    path: "*",
-    component: NotFound
-  }
+    path: '*',
+    component: Visiter,
+    children: [
+      {
+        path: "/blog/:blogId",
+        component: Blog
+      }
+      ,
+      {
+        path: "/artical",
+        component: Artical
+      },
+      {
+        path: "/profile",
+        component: NotYet
+      },
+      {
+        path: "/works",
+        component: NotYet
+      },
+      {
+        path: "/resume",
+        component: NotYet
+      },
+      {
+        path: "*",
+        component: NotFound
+      }
+    ]
+  },
 ];
 
 const router = new VueRouter({
