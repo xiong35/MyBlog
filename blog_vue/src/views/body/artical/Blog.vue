@@ -2,12 +2,12 @@
 // 
 <template>
   <div class="blog">
+    <div
+      class="text-center m-5 text-secondary"
+      v-show="pagedBlogs.length==0"
+      key="placeholder"
+    >没有文章呢QwQ</div>
     <transition-group name="brief-list" tag="ul" class="list-unstyled">
-      <div
-        class="placeholder brief-item m-5 text-secondary"
-        v-if="pagedBlogs.length==0"
-        key="placeholder"
-      >没有文章呢QwQ</div>
       <brief-slot class="brief-item" v-for="(blog, index) in pagedBlogs" :key="index" :blog="blog">
         <h3>{{blog.headline}}</h3>
       </brief-slot>
@@ -80,8 +80,4 @@
     transform: translate(30px, 20px);
   }
   /* TODO change to one by one animation  */
-  .placeholder {
-    margin: auto;
-    text-align: center;
-  }
 </style>

@@ -3,11 +3,11 @@
 <template>
   <ul class="list-unstyled">
     <li class="m-3 nav-aside-li" v-for="(item, index) in links" :key="index">
-      <div class="nav-aside-div">{{item.name}}</div>
       <div class="x-v"></div>
       <div class="x-h"></div>
       <div class="y-v"></div>
       <div class="y-h"></div>
+      <router-link tag="div" class="nav-aside-div" :to="item.link">{{item.name}}</router-link>
     </li>
   </ul>
 </template>
@@ -15,9 +15,9 @@
 <script>
   let links = [
     { name: "文章", link: "/artical" },
-    { name: "文章", link: "/artical" },
-    { name: "文章", link: "/artical" },
-    { name: "文章", link: "/artical" }
+    { name: "简历", link: "/resume" },
+    { name: "关于我", link: "/profile" },
+    { name: "作品", link: "/works" }
   ];
   export default {
     name: "NavAside",
@@ -57,6 +57,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: -1;
   }
   .x-v {
     width: 107%;

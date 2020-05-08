@@ -1,12 +1,12 @@
+// dependency: 
+// 
 <template>
-  <div id="header" class="px-3 py-2 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-1 heading">{{$route.path.slice(1)}}</h1>
-  </div>
+  <div class="notfound">noyFound</div>
 </template>
 
 <script>
   export default {
-    name: "Header",
+    name: "NotFound",
     components: {},
     data() {
       return {};

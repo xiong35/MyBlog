@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 col-md-9" id="artical">
+  <div v-title data-title="Artical" class="col-12 col-md-9" id="artical">
     <ul class="nav nav-tabs my-2">
       <li class="nav-item">
         <big class="nav-link active" href="#">文章</big>
