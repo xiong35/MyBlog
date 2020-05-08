@@ -3,7 +3,7 @@
 <template>
   <div class="blog">
     <brief-slot
-      v-for="(blog, index) in pagedBlogs"
+      v-for="(blog, index) in filteredBlogs"
       :key="index"
       :blog="blog"
     >
@@ -30,17 +30,16 @@
     },
     data() {
       return {
-        blogs: [],
-        tags: []
+        blogs: []
       };
     },
     computed: {
       filteredBlogs() {
         return this.blogs.filter((value, index, array) => {
-          if (this.tags.length == 0) {
+          if (this.$store.state.activeTags.length == 0) {
             return true;
           }
-          for (let tag of this.tags) {
+          for (let tag of this.$store.state.activeTags) {
             if (value.tags.indexOf(tag) != -1) {
               return true;
             }

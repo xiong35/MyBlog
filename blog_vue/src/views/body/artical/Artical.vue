@@ -14,6 +14,8 @@
         class="list-inline-item m-1 tag"
         v-for="(tag, index) in tags"
         :key="index"
+        :class="{'activeTag': $store.state.activeTags.indexOf(tag.tag_name) != -1 }"
+        @click="$store.commit('toggleActiveTag',tag.tag_name)"
       >{{tag.tag_name}}</li>
       <li class="list-inline-item m-1 tag toggle-tags">toggle</li>
     </ul>
@@ -67,11 +69,12 @@
     transition: all 0.3s ease;
     cursor: pointer;
   }
-  .tag:hover {
+  .tag:hover,
+  .activeTag {
     box-shadow: 0 0 5px #007bff71;
     background-color: #0da5fd;
-    color: #fff;
-    border-color: #0da5fd;
+    color: #fff !important;
+    border-color: #0da5fd !important;
   }
   .nav-item {
     cursor: pointer;

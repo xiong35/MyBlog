@@ -7,7 +7,11 @@
         <slot></slot>
         <ul class="list-unstyled list-inline">
           <li class="list-inline-item m-1" v-for="(tag, index) in blog.tags" :key="index">
-            <div class="tag">{{tag}}</div>
+            <div
+              class="tag"
+              :class="{'activeTag': $store.state.activeTags.indexOf(tag) != -1 }"
+              @click.stop="$store.commit('toggleActiveTag',tag)"
+            >{{tag}}</div>
           </li>
         </ul>
         <div class="time text-secondary">
@@ -61,6 +65,7 @@
     background-position: 46%;
     box-shadow: 1px 1px 7px #00a2ff86;
     color: #007bff;
+    border-radius: 2px;
   }
   .back-border:hover .tag {
     border: solid 1px #0046c7;
@@ -70,6 +75,7 @@
     box-shadow: 1px 2px 6px #9c9c9c57;
     background-color: #fff;
     width: 100%;
+    border-radius: 2px;
   }
   .time {
     width: 100%;
@@ -78,19 +84,8 @@
     position: relative;
     text-align: right;
   }
-  .tag {
-    border: solid 1px #000;
-    border-radius: 2000px;
-    text-align: center;
-    padding: 2px 10px 4px 10px;
-    transition: all 1s ease;
-  }
   .tag:hover {
-    box-shadow: 0 0 5px #007bff71;
-    background-color: #0da5fd;
-    color: #fff !important;
     transition: all 0.3s ease;
-    border-color: #0da5fd !important;
   }
   .blog-trap {
     height: 4rem;

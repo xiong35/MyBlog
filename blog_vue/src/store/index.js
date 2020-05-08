@@ -10,7 +10,8 @@ Vue.use(vuex);
 
 const state = {
   duckAlive: true,
-  scrollManager: null
+  scrollManager: null,
+  activeTags: []
 }
 
 const store = new vuex.Store({
@@ -24,6 +25,16 @@ const store = new vuex.Store({
     },
     setScroll(state, payload) {
       state.scrollManager = payload
+    },
+    toggleActiveTag(state, payload) {
+      // give a tag id
+      for (let index in state.activeTags) {
+        if (state.activeTags[index] == payload) {
+          state.activeTags.splice(index, 1)
+          return
+        }
+      }
+      state.activeTags.push(payload)
     }
   },
   // use store.diapatch('methodName', payload)
