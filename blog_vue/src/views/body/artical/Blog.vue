@@ -3,7 +3,11 @@
 <template>
   <div class="blog">
     <transition-group name="brief-list" tag="ul" class="list-unstyled">
-      <div class="placeholder brief-item m-5 text-secondary" v-if="pagedBlogs.length==0" key="placeholder">没有文章呢QwQ</div>
+      <div
+        class="placeholder brief-item m-5 text-secondary"
+        v-if="pagedBlogs.length==0"
+        key="placeholder"
+      >没有文章呢QwQ</div>
       <brief-slot class="brief-item" v-for="(blog, index) in pagedBlogs" :key="index" :blog="blog">
         <h3>{{blog.headline}}</h3>
       </brief-slot>
@@ -48,7 +52,11 @@
         });
       }
     },
-    watch: {},
+    watch: {
+      "$store.state.activeTags": function() {
+        this.curIndex = 0;
+      }
+    },
     methods: {
       getFmtDate(dataStr) {
         return dateFormat("YYYY年mm月dd日 HH:MM", this.parseTime(dataStr));

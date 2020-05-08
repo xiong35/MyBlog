@@ -18,6 +18,7 @@
         @click="$store.commit('toggleActiveTag',tag.tag_name)"
       >{{tag.tag_name}}</li>
       <li class="list-inline-item m-1 tag toggle-tags" key="toggle" @click="showAll = !showAll">
+        {{!showAll?'更多':'收起'}}
         <i class="fa fa-angle-double-down" :class="{'toggle-up':showAll}"></i>
       </li>
     </transition-group>
