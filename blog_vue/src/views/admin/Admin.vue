@@ -108,7 +108,11 @@
     },
     watch: {},
     methods: {
-      submit() {}
+      submit() {
+        postArtical(this.fmtData, this.type).then(response => {
+          alert(response);
+        });
+      }
     },
     created() {},
     mounted() {
