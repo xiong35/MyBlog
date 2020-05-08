@@ -58,7 +58,7 @@
     methods: {},
     mounted() {
       getTags().then(response => {
-        this.tags = response.data;
+        this.tags = response.data.reverse();
       });
     }
   };

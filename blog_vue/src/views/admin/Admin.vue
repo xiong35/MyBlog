@@ -22,7 +22,7 @@
 
     <ul class="list-inline">
       <li
-        v-for="(value, name) in {blog:'+文章',trap:'+踩坑',tag:'+tag'}"
+        v-for="(value, name) in {blog:'+文章',trap:'+踩坑',tags:'+tags'}"
         :key="name"
         class="list-inline-item m-3"
       >
@@ -97,9 +97,9 @@
               tags: this.$store.state.activeTags
             };
             break;
-          case "tag":
+          case "tags":
             data = {
-              tagNames: [this.newTag]
+              tag_names: [this.newTag]
             };
             break;
         }
