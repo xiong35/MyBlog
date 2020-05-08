@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 
 const Artical = () => import("views/body/artical/Artical");
 const Blog = () => import("views/body/artical/BlogContent")
+const Admin = () => import("views/admin/Admin")
+
 const NotYet = () => import("components/common/NotYet")
 const NotFound = () => import("components/common/NotFound")
 
@@ -34,6 +36,10 @@ const routes = [
   {
     path: "/resume",
     component: NotYet
+  },
+  {
+    path: '/admin',
+    component: Admin
   },
   {
     path: "*",

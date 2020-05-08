@@ -35,6 +35,9 @@ const store = new vuex.Store({
         }
       }
       state.activeTags.push(payload)
+    },
+    cleanTags(state) {
+      state.activeTags.length = 0
     }
   },
   // use store.diapatch('methodName', payload)
