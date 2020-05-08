@@ -33,21 +33,23 @@
       </li>
     </ul>
 
-    <div v-show="type" class="comfirm p-2">
-      <div v-for="(value,name) in fmtData" :key="name">
-        <h4>{{name}}</h4>
-        <pre>{{value}}</pre>
-        <hr />
+    <transition name="toggle">
+      <div v-if="type" class="comfirm p-2">
+        <div v-for="(value,name) in fmtData" :key="name">
+          <h4>{{name}}</h4>
+          <pre>{{value}}</pre>
+          <hr />
+        </div>
+        <ul class="choice list-inline">
+          <li @click="type=''" class="list-inline-item">
+            <div class="text-center choice-box">返回</div>
+          </li>
+          <li @click="submit" class="list-inline-item">
+            <div class="text-center choice-box">提交</div>
+          </li>
+        </ul>
       </div>
-      <ul class="choice list-inline">
-        <li @click="type=''" class="list-inline-item">
-          <div class="text-center choice-box">返回</div>
-        </li>
-        <li @click="submit" class="list-inline-item">
-          <div class="text-center choice-box">提交</div>
-        </li>
-      </ul>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -110,8 +112,12 @@
     methods: {
       submit() {
         postArtical(this.fmtData, this.type).then(response => {
-          alert(response);
+          alert(response.status);
         });
+        getTags().then(response => {
+          this.tags = response.data.reverse();
+        });
+        this.type = "";
       }
     },
     created() {},
@@ -131,7 +137,7 @@
     cursor: pointer;
   }
   input {
-    width: 5rem;
+    width: 6rem;
   }
   .comfirm {
     width: 80%;
@@ -173,5 +179,14 @@
     background-color: #0da5fd;
     color: #fff !important;
     border-color: #0da5fd !important;
+  }
+
+  .toggle-enter-active,
+  .toggle-leave-active {
+    transition: opacity 0.4s;
+  }
+  .toggle-enter,
+  .toggle-leave-to {
+    opacity: 0;
   }
 </style>
