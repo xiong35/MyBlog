@@ -32,10 +32,10 @@
     computed: {
       disabled() {
         return value => {
-          if (this.curIndex == 0 && value == "left") {
+          if (this.curIndex <= 0 && value == "left") {
             return true;
           }
-          if (this.curIndex == this.pageNum - 1 && value == "right") {
+          if (this.curIndex >= this.pageNum - 1 && value == "right") {
             return true;
           }
           return false;
