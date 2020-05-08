@@ -9,16 +9,18 @@
       </li>
     </ul>
 
-    <ul class="tag-list p-2 list-inline">
+    <transition-group name="tag-ul" tag="ul" class="tag-list p-2 list-inline">
       <li
         class="list-inline-item m-1 tag"
-        v-for="(tag, index) in tags"
+        v-for="(tag, index) in shownTags"
         :key="index"
         :class="{'activeTag': $store.state.activeTags.indexOf(tag.tag_name) != -1 }"
         @click="$store.commit('toggleActiveTag',tag.tag_name)"
       >{{tag.tag_name}}</li>
-      <li class="list-inline-item m-1 tag toggle-tags">toggle</li>
-    </ul>
+      <li class="list-inline-item m-1 tag toggle-tags" key="toggle" @click="showAll = !showAll">
+        <i class="fa fa-angle-double-down" :class="{'toggle-up':showAll}"></i>
+      </li>
+    </transition-group>
     <div class="headlines">
       <blog></blog>
     </div>
@@ -39,10 +41,18 @@
     },
     data() {
       return {
-        tags: []
+        tags: [],
+        showAll: false
       };
     },
-    computed: {},
+    computed: {
+      shownTags() {
+        if (this.showAll) {
+          return this.tags;
+        }
+        return this.tags.slice(0, 4);
+      }
+    },
     watch: {},
     methods: {},
     mounted() {
@@ -79,4 +89,19 @@
   .nav-item {
     cursor: pointer;
   }
+  .tag-ul-enter,
+  .tag-ul-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .tag-ul-leave-active {
+    position: absolute;
+  }
+  .toggle-up {
+    transform: rotate(180deg);
+  }
+  .toggle-tags i {
+    transition: all 0.5s ease;
+  }
+  /* TODO change to one by one animation  */
 </style>

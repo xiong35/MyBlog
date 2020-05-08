@@ -2,13 +2,17 @@
 // 
 <template>
   <div class="blog">
-    <brief-slot
-      v-for="(blog, index) in filteredBlogs"
-      :key="index"
-      :blog="blog"
-    >
-      <h3>{{blog.headline}}</h3>
-    </brief-slot>
+    <transition-group name="brief-list" tag="ul" class="list-unstyled">
+      <brief-slot
+        class="brief-item"
+        v-for="(blog, index) in filteredBlogs"
+        :key="index"
+        :blog="blog"
+      >
+        <h3>{{blog.headline}}</h3>
+      </brief-slot>
+    </transition-group>
+
     <pager @page-change="changePage" :pageNum="pageNum" :curIndex="curIndex"></pager>
   </div>
 </template>
@@ -63,4 +67,13 @@
   };
 </script>
 <style scoped>
+  .brief-item {
+    transition: all 0.5s ease;
+  }
+  .brief-list-enter,
+  .brief-list-leave-to {
+    opacity: 0;
+    transform: translate(30px, 20px);
+  }
+  /* TODO change to one by one animation  */
 </style>
