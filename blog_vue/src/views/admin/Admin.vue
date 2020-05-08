@@ -4,7 +4,7 @@
   <div class="admin py-5 px-3 container text-right">
     <h1 class="text-center m-3">Admin</h1>
 
-    <mavon-editor class="mavon-editor" v-model="value" />
+    <mavon-editor class="mavon-editor" :toolbars="config" :tabSize="4" v-model="value" />
 
     <transition-group name="tag-ul" tag="ul" class="tag-list mt-5 list-inline">
       <li
@@ -58,6 +58,19 @@
 
   import { getTags } from "network/artical";
 
+  let config = {
+    underline: true, // 下划线
+    strikethrough: true, // 中划线
+    mark: true, // 标记
+    superscript: true, // 上角标
+    subscript: true, // 下角标
+    imagelink: true, // 图片链接
+    fullscreen: true, // 全屏编辑
+    readmodel: true, // 沉浸式阅读
+    subfield: true, // 单双栏模式
+    preview: true // 预览
+  };
+
   export default {
     name: "Admin",
     components: {},
@@ -67,7 +80,8 @@
         newTag: "",
         tags: [],
         showAll: false,
-        type: ""
+        type: "",
+        config
       };
     },
     computed: {

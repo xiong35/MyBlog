@@ -12,6 +12,7 @@
       :editable="false"
       :codeStyle="'atom-one-dark'"
       :scrollStyle="true"
+      :boxShadow="false"
     ></mavon-editor>
   </div>
 </template>
