@@ -50,36 +50,4 @@
 </script>
 
 <style>
-  html {
-    font-size: 14px;
-  }
-  hr {
-    max-width: 1200px;
-    width: 80%;
-  }
-
-  @media (min-width: 768px) {
-    html {
-      font-size: 16px;
-    }
-  }
-
-  .container {
-    max-width: 1200px;
-  }
-  ::selection {
-    color: #ffffff;
-    background-color: #41afee;
-    text-shadow: none;
-  }
-  ::-moz-selection {
-    color: #ffffff;
-    background-color: #41afee;
-    text-shadow: none;
-  }
-  ::-webkit-selection {
-    color: #ffffff;
-    background-color: #41afee;
-    text-shadow: none;
-  }
 </style>

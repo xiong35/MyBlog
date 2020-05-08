@@ -1,23 +1,12 @@
 // dependency: 
 // 
 <template>
-  <div class="admin col-12 col-md-9">
-    <ul class="list-inline">
-      <li class="list-inline-item m-3">
-        <div @click="type='blog'" class="submit">+文章</div>
-      </li>
-      <li class="list-inline-item m-3">
-        <div @click="type='trap'" class="submit">+踩坑</div>
-      </li>
-      <li class="list-inline-item m-3">
-        <div @click="type='tag'" class="submit">+tag</div>
-      </li>
-      <li class="list-inline-item m-3">
-        <input v-model="newTag" class="form-control" type="text" />
-      </li>
-    </ul>
+  <div class="admin py-5 px-3 container text-right">
+    <h1 class="text-center m-3">Admin</h1>
+
     <mavon-editor class="mavon-editor" v-model="value" />
-    <transition-group name="tag-ul" tag="ul" class="tag-list p-2 list-inline">
+
+    <transition-group name="tag-ul" tag="ul" class="tag-list mt-5 list-inline">
       <li
         class="list-inline-item m-1 tag"
         v-for="(tag, index) in shownTags"
@@ -30,6 +19,20 @@
         <i class="fa fa-angle-double-down" :class="{'toggle-up':showAll}"></i>
       </li>
     </transition-group>
+
+    <ul class="list-inline">
+      <li
+        v-for="(value, name) in {blog:'+文章',trap:'+踩坑',tag:'+tag'}"
+        :key="name"
+        class="list-inline-item m-3"
+      >
+        <div @click="type=name" class="submit">{{value}}</div>
+      </li>
+      <li class="list-inline-item m-3">
+        <input v-model="newTag" class="form-control" type="text" />
+      </li>
+    </ul>
+
     <div v-show="type" class="comfirm p-2">
       <div v-for="(value,name) in fmtData" :key="name">
         <h4>{{name}}</h4>
@@ -129,16 +132,20 @@
   .comfirm {
     width: 80%;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 100px;
+    left: 10%;
     background-color: #f5f2ee;
     z-index: 9;
     border-radius: 4px;
     box-shadow: 0 0 6px #aaaaaa8e;
   }
+  .comfirm h4,
+  .comfirm pre {
+    text-align: initial;
+  }
   .mavon-editor {
     z-index: 3;
+    width: 100% !important;
   }
   .choice-box {
     width: 4rem;
@@ -147,5 +154,20 @@
     border-radius: 2000px;
     border: solid 1px #000;
     margin: 7px;
+  }
+  .tag {
+    border: solid 1px #000;
+    border-radius: 2000px;
+    text-align: center;
+    padding: 2px 10px 4px 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .tag:hover,
+  .activeTag {
+    box-shadow: 0 0 5px #007bff71;
+    background-color: #0da5fd;
+    color: #fff !important;
+    border-color: #0da5fd !important;
   }
 </style>
