@@ -1,9 +1,9 @@
 // dependency: 
 // 
 <template>
-  <div class="blogcontent">
+  <div class="col-12 col-md-9">
     <mavon-editor
-      class="markdown"
+      class="blog-content"
       :value="content"
       :subfield="false"
       :defaultOpen="'preview'"
@@ -26,24 +26,26 @@
       return {
         blogContent: "加载中",
         content: `
-  # pap
+# pap
 
-  ### pakdc
+### pakdc
 
-  **fwsoigfwf**sdvoiuhbosd
+**fwsoigfwf**sdvoiuhbosd
 
-  \`\`\`python
-  a = dict()
-  b = "dskjfvhb"
+[baidu](http://www.baidu.com)
 
-  class aaa(adf):
-      def __init__(self):
-          self.num = 124254 + 9857
+\`\`\`python
+a = dict()
+b = "dskjfvhb"
 
-      def dada(self):
-          return 666
-  \`\`\`
-                      `
+class aaa(adf):
+    def __init__(self):
+        self.num = 124254 + 9857
+
+    def dada(self):
+        return 666
+\`\`\`
+                                `
       };
     },
     computed: {},
@@ -64,7 +66,7 @@
   };
 </script>
 <style scoped>
-  .markdown {
-    width: 50vw !important;
+  .blog-content {
+    width: 100% !important;
   }
 </style>

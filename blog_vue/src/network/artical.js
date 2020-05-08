@@ -8,3 +8,9 @@ export function getBlog(id = '') {
     url: "/artical/blog/" + id
   });
 }
+
+export function getTags() {
+  return request({
+    url: "/artical/tags/"
+  });
+}

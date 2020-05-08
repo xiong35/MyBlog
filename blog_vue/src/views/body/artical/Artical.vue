@@ -9,12 +9,13 @@
       </li>
     </ul>
 
-    <ul class="tag-list my-2 p-3 list-inline">
-      <li class="list-inline-item tag">2333</li>
-      <li class="list-inline-item tag">2333</li>
-      <li class="list-inline-item tag">2333</li>
-      <li class="list-inline-item tag">2333</li>
-      <li class="list-inline-item tag toggle-tags">toggle</li>
+    <ul class="tag-list p-2 list-inline">
+      <li
+        class="list-inline-item m-1 tag"
+        v-for="(tag, index) in tags"
+        :key="index"
+      >{{tag.tag_name}}</li>
+      <li class="list-inline-item m-1 tag toggle-tags">toggle</li>
     </ul>
     <div class="headlines">
       <blog></blog>
@@ -26,6 +27,8 @@
   import Blog from "./Blog";
   import Trap from "./Trap";
 
+  import { getTags } from "network/artical";
+
   export default {
     name: "Artical",
     components: {
@@ -33,12 +36,18 @@
       Trap
     },
     data() {
-      return {};
+      return {
+        tags: []
+      };
     },
     computed: {},
     watch: {},
     methods: {},
-    mounted() {}
+    mounted() {
+      getTags().then(response => {
+        this.tags = response.data;
+      });
+    }
   };
 </script>
 <style>
