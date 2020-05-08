@@ -1,9 +1,8 @@
 // dependency: 
 // bootstrap
 <template>
-  <div class="col-6 col-md-6" id="comment">
+  <div class="col-6 col-md-3" id="comment">
     <!-- #TODO:add thumbup / comment -->
-    <p>this is comment</p>
   </div>
 </template>
 
