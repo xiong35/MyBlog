@@ -21,7 +21,7 @@
         <i class="fa fa-angle-double-down" :class="{'toggle-up':showAll}"></i>
       </li>
     </transition-group>
-    <div class="headlines">
+    <div>
       <blog></blog>
     </div>
   </div>

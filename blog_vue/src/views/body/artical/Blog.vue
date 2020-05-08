@@ -3,12 +3,7 @@
 <template>
   <div class="blog">
     <transition-group name="brief-list" tag="ul" class="list-unstyled">
-      <brief-slot
-        class="brief-item"
-        v-for="(blog, index) in filteredBlogs"
-        :key="index"
-        :blog="blog"
-      >
+      <brief-slot class="brief-item" v-for="(blog, index) in pagedBlogs" :key="index" :blog="blog">
         <h3>{{blog.headline}}</h3>
       </brief-slot>
     </transition-group>
