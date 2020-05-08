@@ -1,13 +1,20 @@
 // dependency: 
 // 
 <template>
-  <div class="notfound">noyFound</div>
+  <div class="notfound">
+    <div v-title data-title="404404404404404404404404404404404404" class="notfound">NotFound</div>
+    <go-back />
+  </div>
 </template>
 
 <script>
+  import GoBack from "./GoBack";
+
   export default {
     name: "NotFound",
-    components: {},
+    components: {
+      GoBack
+    },
     data() {
       return {};
     },

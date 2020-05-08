@@ -2,9 +2,7 @@
 // 
 <template>
   <div class="col-12 col-md-9">
-    <h5 class="m-2 text-secondary" @click="$router.back()">
-      <i class="fa fa-angle-double-left"></i> 返回
-    </h5>
+    <go-back></go-back>
     <mavon-editor
       class="blog-content"
       :value="content"
@@ -21,34 +19,37 @@
 
 <script>
   import { getBlog } from "network/artical";
+  import GoBack from "@/components/common/GoBack";
 
   export default {
     name: "BlogContent",
-    components: {},
+    components: {
+      GoBack
+    },
     data() {
       return {
         blogContent: "加载中",
         content: `
-  # pap
+          # pap
 
-  ### pakdc
+          ### pakdc
 
-  **fwsoigfwf**sdvoiuhbosd
+          **fwsoigfwf**sdvoiuhbosd
 
-  [baidu](http://www.baidu.com)
+          [baidu](http://www.baidu.com)
 
-  \`\`\`python
-  a = dict()
-  b = "dskjfvhb"
+          \`\`\`python
+          a = dict()
+          b = "dskjfvhb"
 
-  class aaa(adf):
-      def __init__(self):
-          self.num = 124254 + 9857
+          class aaa(adf):
+              def __init__(self):
+                  self.num = 124254 + 9857
 
-      def dada(self):
-          return 666
-  \`\`\`
-                                              `
+              def dada(self):
+                  return 666
+          \`\`\`
+                                                              `
       };
     },
     computed: {},
@@ -63,6 +64,9 @@
     created() {},
     mounted() {
       getBlog(this.$route.params.blogId).then(response => {
+        if (response.status != 200) {
+          this.$router.replace("/404");
+        }
         this.blogContent = response.content.content;
       });
     }
@@ -71,14 +75,5 @@
 <style scoped>
   .blog-content {
     width: 100% !important;
-  }
-  h5:hover {
-    color: #007bff !important;
-    text-shadow: 0 0 1px #007bff66;
-    transition: all 0.3s ease;
-  }
-  h5 {
-    transition: all 0.3s ease;
-    cursor: pointer;
   }
 </style>
