@@ -4,11 +4,11 @@
   <div class="blog">
     <div
       class="text-center m-5 text-secondary"
-      v-show="pagedBlogs.length==0"
+      v-show="pagedArticals.length==0"
       key="placeholder"
     >没有文章呢QwQ</div>
     <transition-group name="brief-list" tag="ul" class="list-unstyled">
-      <brief-slot class="brief-item" v-for="(blog, index) in pagedBlogs" :key="index" :blog="blog">
+      <brief-slot class="brief-item" v-for="(blog, index) in pagedArticals" :key="index" :artical="blog">
         <h3>{{blog.headline}}</h3>
       </brief-slot>
     </transition-group>
@@ -40,9 +40,6 @@
     computed: {
       filteredBlogs() {
         return this.blogs.filter((value, index, array) => {
-          // if (this.$store.state.activeTags.length == 0) {
-          //   return true;
-          // }
           for (let tag of this.$store.state.activeTags) {
             if (value.tags.indexOf(tag) == -1) {
               return false;
@@ -58,9 +55,6 @@
       }
     },
     methods: {
-      getFmtDate(dataStr) {
-        return dateFormat("YYYY年mm月dd日 HH:MM", this.parseTime(dataStr));
-      }
     },
     created() {
       getBlog().then(response => {
@@ -71,13 +65,4 @@
   };
 </script>
 <style scoped>
-  .brief-item {
-    transition: all 0.5s ease;
-  }
-  .brief-list-enter,
-  .brief-list-leave-to {
-    opacity: 0;
-    transform: translate(30px, 20px);
-  }
-  /* TODO change to one by one animation  */
 </style>

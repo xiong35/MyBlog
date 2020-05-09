@@ -1,11 +1,12 @@
 <template>
   <div v-title data-title="Artical" class="col-12 col-md-9" id="artical">
     <ul class="nav nav-tabs my-2">
-      <li class="nav-item">
-        <big class="nav-link active" href="#">文章</big>
-      </li>
-      <li class="nav-item">
-        <big class="nav-link" href="#">踩坑记录</big>
+      <li class="nav-item" v-for="(item, index) in ['文章','踩坑记录']" :key="index">
+        <big
+          class="nav-link"
+          :class="{'active':activeIndex==index}"
+          @click="activeIndex=index"
+        >{{item}}</big>
       </li>
     </ul>
 
@@ -22,9 +23,7 @@
         <i class="fa fa-angle-double-down" :class="{'toggle-up':showAll}"></i>
       </li>
     </transition-group>
-    <div>
-      <blog></blog>
-    </div>
+    <div :is="['blog','trap'][activeIndex]"></div>
   </div>
 </template>
 
@@ -43,7 +42,8 @@
     data() {
       return {
         tags: [],
-        showAll: false
+        showAll: false,
+        activeIndex: 0
       };
     },
     computed: {
@@ -103,6 +103,16 @@
   }
   .toggle-tags i {
     transition: all 0.5s ease;
+  }
+  /* TODO change to one by one animation  */
+
+  .brief-item {
+    transition: all 0.5s ease;
+  }
+  .brief-list-enter,
+  .brief-list-leave-to {
+    opacity: 0;
+    transform: translate(30px, 20px);
   }
   /* TODO change to one by one animation  */
 </style>

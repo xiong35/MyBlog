@@ -16,7 +16,7 @@ export var PagerMixin = {
     }
   },
   computed: {
-    pagedBlogs() {
+    pagedArticals() {
       let begin = this.curIndex * this.perPage;
       return this.filteredBlogs.slice(begin, begin + this.perPage);
     },
