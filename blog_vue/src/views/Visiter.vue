@@ -1,18 +1,16 @@
 <template>
   <div @click="callPartical" id="visiter">
-    <scroll class="wrapper" ref="scroll" :probe-type="3">
-      <blog-header />
-      <hr />
-      <div class="container">
-        <div class="row">
-          <blog-aside />
-          <keep-alive>
-            <router-view />
-          </keep-alive>
-        </div>
-        <blog-footer />
+    <blog-header />
+    <hr />
+    <div class="container">
+      <div class="row">
+        <blog-aside />
+        <keep-alive>
+          <router-view />
+        </keep-alive>
       </div>
-    </scroll>
+      <blog-footer />
+    </div>
 
     <partical ref="partical"></partical>
     <duck ref="duck" />
@@ -26,7 +24,6 @@
   import BlogArtical from "views/body/artical/Artical";
   import BlogFooter from "views/footer/Footer";
 
-  import Scroll from "@/components/common/scroll/Scroll";
   import Partical from "@/components/common/partical/Partical";
   import Duck from "@/components/common/duck/Duck";
   import FloatNav from "@/components/context/floatNav/FloatNav";
@@ -38,7 +35,6 @@
       BlogAside,
       BlogArtical,
       BlogFooter,
-      Scroll,
       Partical,
       Duck,
       FloatNav

@@ -14,7 +14,7 @@
       <li
         class="list-inline-item m-1 tag"
         v-for="(tag, index) in shownTags"
-        :key="index"
+        :key="index+'artical'"
         :class="{'activeTag': $store.state.activeTags.indexOf(tag.tag_name) != -1 }"
         @click="$store.commit('toggleActiveTag',tag.tag_name)"
       >{{tag.tag_name}}</li>

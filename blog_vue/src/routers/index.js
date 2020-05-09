@@ -64,4 +64,11 @@ const router = new VueRouter({
   mode: "history"
 });
 
+router.afterEach((to, from) => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
+
 export default router;

@@ -1,5 +1,5 @@
 // dependency: 
-// better scroll, font-awesome
+// font-awesome
 <template>
   <ul class="floatnav list-unstyled">
     <li @click="$emit('toggle-f-nav')">

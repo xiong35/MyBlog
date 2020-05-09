@@ -10,7 +10,6 @@ Vue.use(vuex);
 
 const state = {
   duckAlive: true,
-  scrollManager: null,
   activeTags: []
 }
 
@@ -19,12 +18,8 @@ const store = new vuex.Store({
   state,
   // use store.commit('methodName', payload)
   mutations: {
-    someMethod(state, payload) { },
     toggleDuck(state) {
       state.duckAlive = !state.duckAlive
-    },
-    setScroll(state, payload) {
-      state.scrollManager = payload
     },
     toggleActiveTag(state, payload) {
       // give a tag id
@@ -43,14 +38,11 @@ const store = new vuex.Store({
   // use store.diapatch('methodName', payload)
   // context == this, use context.state
   actions: {
-    someMethod(context, payload) { },
     scrollTo(context, payload) {
-      if (payload) {
-        var { x, y, time } = payload
-      } else {
-        var [x, y, time] = [0, 0, 300]
-      }
-      context.state.scrollManager.scrollTo(x, y, time);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     }
   }
 });
