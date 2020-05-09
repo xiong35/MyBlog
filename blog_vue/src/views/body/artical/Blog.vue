@@ -8,7 +8,12 @@
       key="placeholder"
     >没有文章呢QwQ</div>
     <transition-group name="brief-list" tag="ul" class="list-unstyled">
-      <brief-slot class="brief-item" v-for="(blog, index) in pagedArticals" :key="index" :artical="blog">
+      <brief-slot
+        class="brief-item"
+        v-for="(blog, index) in pagedArticals"
+        :key="index"
+        :artical="blog"
+      >
         <h3>{{blog.headline}}</h3>
       </brief-slot>
     </transition-group>
@@ -18,7 +23,7 @@
 </template>
 
 <script>
-  import { getBlog } from "network/artical";
+  import { getArtical } from "network/artical";
 
   import BriefSlot from "./BriefSlot";
   import Pager from "./Pager";
@@ -38,7 +43,7 @@
       };
     },
     computed: {
-      filteredBlogs() {
+      filteredArticals() {
         return this.blogs.filter((value, index, array) => {
           for (let tag of this.$store.state.activeTags) {
             if (value.tags.indexOf(tag) == -1) {
@@ -54,14 +59,13 @@
         this.curIndex = 0;
       }
     },
-    methods: {
-    },
-    created() {
-      getBlog().then(response => {
+    methods: {},
+    created() {},
+    mounted() {
+      getArtical().then(response => {
         this.blogs = response.data;
       });
-    },
-    mounted() {}
+    }
   };
 </script>
 <style scoped>

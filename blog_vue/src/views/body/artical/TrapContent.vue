@@ -5,7 +5,7 @@
     <go-back></go-back>
     <mavon-editor
       class="blog-content"
-      :value="blogContent"
+      :value="trapContent"
       :subfield="false"
       :defaultOpen="'preview'"
       :toolbarsFlag="false"
@@ -23,25 +23,29 @@
   import GoBack from "@/components/common/GoBack";
 
   export default {
-    name: "BlogContent",
+    name: "TrapContent",
     components: {
       GoBack
     },
     data() {
       return {
-        blogContent: "加载中"
+        trap: {}
       };
     },
-    computed: {},
+    computed: {
+      trapContent() {
+        return `## ${this.trap.context}\n### ${this.trap.problem}\n---\n${this.trap.solution}`;
+      }
+    },
     watch: {},
     methods: {},
     created() {},
     mounted() {
-      getArtical(this.$route.params.blogId).then(response => {
+      getArtical(this.$route.params.trapId, "trap").then(response => {
         if (response.status != 200) {
           this.$router.replace("/404");
         }
-        this.blogContent = response.content.content;
+        this.trap = response.data;
       });
     }
   };

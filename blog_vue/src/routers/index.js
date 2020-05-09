@@ -4,7 +4,8 @@ import VueRouter from "vue-router";
 const Visiter = () => import("views/Visiter")
 
 const Artical = () => import("views/body/artical/Artical");
-const Blog = () => import("views/body/artical/BlogContent")
+const BlogContent = () => import("views/body/artical/BlogContent")
+const TrapContent = () => import("views/body/artical/TrapContent")
 const Admin = () => import("views/admin/Admin")
 
 const NotYet = () => import("components/common/NotYet")
@@ -28,9 +29,12 @@ const routes = [
     children: [
       {
         path: "/blog/:blogId",
-        component: Blog
-      }
-      ,
+        component: BlogContent
+      },
+      {
+        path: "/trap/:trapId",
+        component: TrapContent
+      },
       {
         path: "/artical",
         component: Artical

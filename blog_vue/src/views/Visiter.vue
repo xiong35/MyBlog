@@ -4,9 +4,11 @@
       <blog-header />
       <hr />
       <div class="container">
-        <div class="row ">
+        <div class="row">
           <blog-aside />
-          <router-view />
+          <keep-alive>
+            <router-view />
+          </keep-alive>
         </div>
         <blog-footer />
       </div>

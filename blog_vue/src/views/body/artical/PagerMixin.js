@@ -18,10 +18,10 @@ export var PagerMixin = {
   computed: {
     pagedArticals() {
       let begin = this.curIndex * this.perPage;
-      return this.filteredBlogs.slice(begin, begin + this.perPage);
+      return this.filteredArticals.slice(begin, begin + this.perPage);
     },
     pageNum() {
-      return Math.ceil(this.filteredBlogs.length / this.perPage);
+      return Math.ceil(this.filteredArticals.length / this.perPage);
     }
   }
 }

@@ -1,11 +1,11 @@
 import { request } from "./request";
 
-export function getBlog(id = '') {
+export function getArtical(id = '',type='blog') {
   if (id) {
     id = "?id=" + id
   }
   return request({
-    url: "/artical/blog/" + id
+    url: `/artical/${type}/` + id
   });
 }
 

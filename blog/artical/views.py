@@ -55,9 +55,9 @@ class Trap(View):
 
         get_id = request.GET.get('id', None)
         if get_id:
-            qs = TrapModel.objects.filter(pk=get_id).values('solution')
+            qs = TrapModel.objects.filter(pk=get_id).values().first()
             if qs:
-                return JsonResponse({'status': 200, 'solution': list(qs)[0]})
+                return JsonResponse({'status': 200, 'data':qs})
             return JsonResponse({"status": 404})
 
         json_data = [

@@ -110,7 +110,7 @@
               context: values[0],
               problem: values[1],
               solution: values[2],
-              tags: this.$store.state.activeTags
+              tag_names: this.$store.state.activeTags
             };
             break;
           case "tags":
@@ -125,12 +125,15 @@
     watch: {},
     methods: {
       submit() {
-        postArtical(this.fmtData, this.type).then(response => {
-          alert(response.status);
-        });
-        getTags().then(response => {
-          this.tags = response.data.reverse();
-        });
+        postArtical(this.fmtData, this.type)
+          .then(response => {
+            alert(response.status == 200 ? "success!" : response.status);
+          })
+          .then(() => {
+            getTags().then(response => {
+              this.tags = response.data.reverse();
+            });
+          });
         this.type = "";
       }
     },

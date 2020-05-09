@@ -1,7 +1,7 @@
 // dependency: 
 // 
 <template>
-  <router-link tag="div" :to="{path: 'blog/'+ artical.id}">
+  <router-link tag="div" :to="{path: type+'/'+ artical.id}">
     <div class="back-border my-2">
       <div class="brief p-2">
         <slot></slot>
@@ -28,7 +28,16 @@
   export default {
     name: "BriefSlot",
     components: {},
-    props: ["artical"],
+    props: {
+      artical: {
+        type: Object,
+        default: {}
+      },
+      type: {
+        type: String,
+        default: "blog"
+      }
+    },
     computed: {},
     methods: {
       parseTime,
