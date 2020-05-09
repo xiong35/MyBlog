@@ -15,6 +15,11 @@ class ArticalTag(models.Model):
         self.count += 1
         self.save(update_fields=['count'])
 
+    # tags = ArticalTag.objects.filter(tag_name__in=info.get('tags'))
+    # for tag in tags:
+    #     record.tags.add(tag)
+    #     tag.taged()
+
 
 class Trap(models.Model):
     class Meta:

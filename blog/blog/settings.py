@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'me',
     'my_app',
     'upload',
+    "meta"
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,7 @@
 <template>
   <div id="aside" class="d-none d-md-block col-3">
     <me></me>
+    <blog-meta></blog-meta>
     <hr />
     <nav-aside></nav-aside>
   </div>
@@ -9,11 +10,14 @@
 <script>
   import Me from "./components/Me";
   import NavAside from "./components/NavAside";
+  import BlogMeta from "./components/Meta";
+
   export default {
     name: "Aside",
     components: {
       Me,
-      NavAside
+      NavAside,
+      BlogMeta
     },
     data() {
       return {};

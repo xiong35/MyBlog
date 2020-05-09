@@ -19,7 +19,7 @@ Vue.config.productionTip = false;
 
 Vue.directive('title', {
   inserted: function (el, binding) {
-    document.title = el.dataset.title
+    document.title = "Xiong35's Blog | " + el.dataset.title
   }
 })
 

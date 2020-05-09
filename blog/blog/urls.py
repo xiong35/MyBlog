@@ -24,4 +24,5 @@ urlpatterns = [
     path('me/', include(('me.urls', 'me'), namespace='me')),
     path('my_app/', include(('my_app.urls', 'my_app'), namespace='my_app')),
     path('upload/', include(('upload.urls', 'upload'), namespace='upload')),
+    path('meta/', include(('meta.urls', 'meta'), namespace='meta')),
 ]
