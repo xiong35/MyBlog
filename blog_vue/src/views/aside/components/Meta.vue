@@ -5,8 +5,8 @@
     <table>
       <tbody>
         <tr v-for="(item, key) in fmtMetaDatas" :key="key">
-          <td class="px-1">{{item.key}}</td>
-          <td class="px-2">{{item.value}}</td>
+          <td class="px-1" :class="{'too-long':item.key.length>3}">{{item.key}}</td>
+          <td class="px-1" :class="{'too-long':item.value.length>4}">{{item.value}}</td>
         </tr>
       </tbody>
     </table>
@@ -26,7 +26,14 @@
     },
     computed: {
       fmtMetaDatas() {
+        let new_date = new Date();
+        let old_date = new Date("2020-5-8 12:00:00");
+
+        let difftime = new_date - old_date;
+        let day = Math.round(difftime / 24 / 60 / 60 / 1000);
+
         let fmt = [];
+
         if (this.metaDatas.length <= 0) {
           return [];
         }
@@ -36,7 +43,8 @@
           data.value = item.value + " " + item.key.split("/")[1];
           fmt.push(data);
         }
-        console.log(fmt);
+        
+        fmt.push({ key: "站点存活", value: day + " 天" })
 
         return fmt;
       }
@@ -60,5 +68,9 @@
   }
   table {
     margin: auto;
+  }
+  .too-long {
+    font-size: 80%;
+    padding-top: 3%;
   }
 </style>
