@@ -8,7 +8,7 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 class VisiterAdmin(admin.ModelAdmin):
-    list_display = ('expire',)
+    list_display = ('expire', 'authority')
 
 
 admin.site.register(Visiter, VisiterAdmin)

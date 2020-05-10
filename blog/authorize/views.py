@@ -36,8 +36,9 @@ class Authorize(View):
             if not agent:
                 agent = 'none'
             token = gen_token(remote_addr, agent)
+            expire = now + dt.timedelta(days=1)
 
-            qs = Visiter(token=token, expire=now + dt.timedelta(days=1))
+            qs = Visiter(token=token, expire=expire)
 
         password = info.get('password')
         if password:
