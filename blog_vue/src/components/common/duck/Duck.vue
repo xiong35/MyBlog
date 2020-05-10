@@ -74,13 +74,19 @@
           Math.random() * (document.documentElement.clientWidth - 20);
       },
       handleClick() {
-        this.$store.commit("toggleDuck");
         let data = sessionStorage.getItem("duckKilled");
-        commitKill();
         if (!data) {
           sessionStorage.setItem("duckKilled", 1);
-          alert("你抓住了小黄鸭!")
-          alert("数据已经提交, 用电脑打开博客, 刷新后可以看到小黄鸭一共被抓住了多少次!")
+          alert("你抓住了小黄鸭!");
+          alert(
+            "数据已经提交, 用电脑打开博客, 刷新后可以看到小黄鸭一共被抓住了多少次!"
+          );
+          data = 0;
+        }
+        if (data > 9) {
+          alert("我忍你很久了啊");
+          alert("秘技: 封印!");
+          alert("你现在别想和小黄鸭玩耍了!!");
           return;
         }
         sessionStorage.setItem("duckKilled", +data + 1);
@@ -89,7 +95,7 @@
           alert("哦, 我太了解你了, ");
           alert("你杀了这么多小黄鸭只是为了把计分上的次数抬高不是吗???");
           alert("好, 你喜欢玩");
-          alert("我小黄鸭也不是好惹的!");
+          alert("小黄鸭生气了!!");
           alert("等着瞧吧!!");
           this.wanderTime = 400;
         } else if (data >= 5) {
@@ -97,6 +103,8 @@
           alert("你赢了");
           alert("求你放过小黄鸭吧QwQ");
         }
+        commitKill();
+        this.$store.commit("toggleDuck");
       }
     },
     created() {},
