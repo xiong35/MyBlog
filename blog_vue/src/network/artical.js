@@ -5,12 +5,12 @@ export function getArtical(id = '',type='blog') {
     id = "?id=" + id
   }
   return request({
-    url: `/artical/${type}/` + id
+    url: `artical/${type}/` + id
   });
 }
 
 export function getTags() {
   return request({
-    url: "/artical/tags/"
+    url: "artical/tags/"
   });
 }

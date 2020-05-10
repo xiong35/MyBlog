@@ -3,7 +3,6 @@ from django.http import JsonResponse
 from django.views.generic import View
 
 from .models import BlogMeta as BlogMetaModel
-
 import json
 
 
@@ -14,4 +13,15 @@ class BlogMeta(View):
         qs = BlogMetaModel.objects.all().values()
         if qs:
             return JsonResponse({'status': 200, 'data': list(qs)})
+        return JsonResponse({"status": 404})
+
+
+class Duck(View):
+
+    def post(self, request):
+        print("\n\ndududu\n\n")
+        duck = BlogMetaModel.objects.filter(key__contains='鸭').first()
+        if duck:
+            duck.update()
+            return JsonResponse({'status': 200})
         return JsonResponse({"status": 404})

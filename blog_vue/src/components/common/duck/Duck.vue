@@ -8,7 +8,7 @@
         alt="a little duck"
         :class="direction"
         :style="style"
-        @click="$store.commit('toggleDuck')"
+        @click="handleClick"
         v-show="show"
       />
     </transition>
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+  import { commitKill } from "network/meta";
+
   let dir2num = { left: 1, right: -1 };
 
   export default {
@@ -28,7 +30,8 @@
         clientX: 10,
         clientY: 10,
         show: true,
-        alive: true
+        alive: true,
+        wanderTime: 700
       };
     },
     computed: {
@@ -55,7 +58,10 @@
         } else {
           this.show = true;
           this.direction = "left";
-          this.wanderTimmer = setInterval(this.wander, 750);
+          setTimeout(() => {
+            this.wander();
+          }, 20);
+          this.wanderTimmer = setInterval(this.wander, this.wanderTime);
         }
         this.alive = !this.alive;
       }
@@ -66,12 +72,37 @@
           Math.random() * (document.documentElement.clientHeight - 20);
         this.clientX =
           Math.random() * (document.documentElement.clientWidth - 20);
+      },
+      handleClick() {
+        this.$store.commit("toggleDuck");
+        let data = sessionStorage.getItem("duckKilled");
+        commitKill();
+        if (!data) {
+          sessionStorage.setItem("duckKilled", 1);
+          alert("你抓住了小黄鸭!")
+          alert("数据已经提交, 用电脑打开博客, 刷新后可以看到小黄鸭一共被抓住了多少次!")
+          return;
+        }
+        sessionStorage.setItem("duckKilled", +data + 1);
+        if (data == 2) {
+          alert("喂, 你是不是过于残忍了??");
+          alert("哦, 我太了解你了, ");
+          alert("你杀了这么多小黄鸭只是为了把计分上的次数抬高不是吗???");
+          alert("好, 你喜欢玩");
+          alert("我小黄鸭也不是好惹的!");
+          alert("等着瞧吧!!");
+          this.wanderTime = 400;
+        } else if (data >= 5) {
+          alert("好好好");
+          alert("你赢了");
+          alert("求你放过小黄鸭吧QwQ");
+        }
       }
     },
     created() {},
     mounted() {
       this.wander();
-      this.wanderTimmer = setInterval(this.wander, 750);
+      this.wanderTimmer = setInterval(this.wander, this.wanderTime);
     }
   };
 </script>
@@ -79,7 +110,7 @@
   #duck img {
     width: 1.8rem;
     height: 1.8rem;
-    transition: all 0.5s ease;
+    transition: all 0.7s ease;
     cursor: crosshair;
     position: fixed;
     z-index: 7;
