@@ -42,8 +42,6 @@ class Blog(View):
 
     def post(self, request):
 
-        update_meta()
-
         info = json.loads(request.body)
 
         record = BlogModel(content=info.get('content'),
@@ -55,6 +53,7 @@ class Blog(View):
             record.tags.add(tag)
             tag.taged()
 
+        update_meta()
         return JsonResponse({'status': 200})
 
 
@@ -84,7 +83,6 @@ class Trap(View):
         return JsonResponse({"status": 200, "data": json_data})
 
     def post(self, request):
-        update_meta()
 
         json_data = json.loads(request.body)
 
@@ -101,6 +99,7 @@ class Trap(View):
             record.tags.add(tag)
             tag.taged()
 
+        update_meta()
         return JsonResponse({"status": 200})
 
 

@@ -181,6 +181,7 @@
     border-radius: 2000px;
     border: solid 1px #000;
     margin: 7px;
+    cursor: pointer;
   }
   .tag {
     border: solid 1px #000;
