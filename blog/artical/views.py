@@ -7,6 +7,9 @@ from .models import ArticalTag
 from .models import Trap as TrapModel
 from meta.models import BlogMeta
 
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+
 import json
 
 
@@ -18,8 +21,9 @@ def update_meta():
 
 class Blog(View):
 
+    @method_decorator(cache_page(60*5))
     def get(self, request):
-
+        print('\n\n\nin\n\n')
         get_id = request.GET.get('id', None)
         if get_id:
             qs = BlogModel.objects.filter(pk=get_id).values('content')
