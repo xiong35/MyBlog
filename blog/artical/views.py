@@ -23,7 +23,6 @@ class Blog(View):
 
     @method_decorator(cache_page(60*5))
     def get(self, request):
-        print('\n\n\nin\n\n')
         get_id = request.GET.get('id', None)
         if get_id:
             qs = BlogModel.objects.filter(pk=get_id).values('content')
@@ -62,7 +61,7 @@ class Blog(View):
 
 
 class Trap(View):
-
+    @method_decorator(cache_page(60*5))
     def get(self, request):
 
         get_id = request.GET.get('id', None)
@@ -108,7 +107,6 @@ class Trap(View):
 
 
 class Tag(View):
-
     def get(self, request):
         qs = ArticalTag.objects.values()
         return JsonResponse({"status": 200, "data": list(qs)})
