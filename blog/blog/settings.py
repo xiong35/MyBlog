@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'artical',
     'authorize',
-    'home',
     'me',
     'my_app',
     'upload',
