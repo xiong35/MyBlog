@@ -20,7 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('artical/', include(('artical.urls', 'artical'), namespace='artical')),
     path('authorize/', include(('authorize.urls', 'authorize'), namespace='authorize')),
-    path('home/', include(('home.urls', 'home'), namespace='home')),
     path('me/', include(('me.urls', 'me'), namespace='me')),
     path('my_app/', include(('my_app.urls', 'my_app'), namespace='my_app')),
     path('upload/', include(('upload.urls', 'upload'), namespace='upload')),
