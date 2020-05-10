@@ -5,8 +5,15 @@ from django.views.generic import View
 from .models import Blog as BlogModel
 from .models import ArticalTag
 from .models import Trap as TrapModel
+from meta.models import BlogMeta
 
 import json
+
+
+def update_meta():
+    artical_model = BlogMeta.objects.filter(key__contains='文章').first()
+    if artical_model:
+        artical_model.update()
 
 
 class Blog(View):
@@ -35,6 +42,8 @@ class Blog(View):
 
     def post(self, request):
 
+        update_meta()
+
         info = json.loads(request.body)
 
         record = BlogModel(content=info.get('content'),
@@ -57,7 +66,7 @@ class Trap(View):
         if get_id:
             qs = TrapModel.objects.filter(pk=get_id).values().first()
             if qs:
-                return JsonResponse({'status': 200, 'data':qs})
+                return JsonResponse({'status': 200, 'data': qs})
             return JsonResponse({"status": 404})
 
         json_data = [
@@ -75,6 +84,8 @@ class Trap(View):
         return JsonResponse({"status": 200, "data": json_data})
 
     def post(self, request):
+        update_meta()
+
         json_data = json.loads(request.body)
 
         tag_names = json_data.get("tag_names")
