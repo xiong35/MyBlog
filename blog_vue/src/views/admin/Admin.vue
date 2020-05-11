@@ -100,21 +100,23 @@
         if (!this.type) {
           return {};
         }
+        let content = this.value
+        let one = /^# (.*)$/gm.exec(this.value)[1]
+        let two = /^## (.*)$/gm.exec(this.value)[1]
         let data = {};
-        let values = this.value.split("======\n");
         switch (this.type) {
           case "blog":
             data = {
-              headline: values[0],
-              content: values[1],
+              headline: one,
+              content,
               tags: this.$store.state.activeTags
             };
             break;
           case "trap":
             data = {
-              context: values[0],
-              problem: values[1],
-              solution: values[2],
+              context: one,
+              problem: two,
+              solution: content,
               tag_names: this.$store.state.activeTags
             };
             break;

@@ -1,11 +1,11 @@
 // dependency: 
 // 
 <template>
-  <div class="col-12 col-md-9">
+  <div class="col-12 col-md-9" :key="$route.params.trapId+'trap'">
     <go-back></go-back>
     <mavon-editor
       class="blog-content"
-      :value="trapContent"
+      :value="trap.solution"
       :subfield="false"
       :defaultOpen="'preview'"
       :toolbarsFlag="false"
@@ -33,14 +33,11 @@
       };
     },
     computed: {
-      trapContent() {
-        return `## ${this.trap.context}\n### ${this.trap.problem}\n---\n${this.trap.solution}`;
-      }
     },
     watch: {},
     methods: {},
     created() {},
-    mounted() {
+    activated() {
       getArtical(this.$route.params.trapId, "trap").then(response => {
         if (response.status != 200) {
           this.$router.replace("/404");

@@ -36,7 +36,9 @@ def check_auth(request):
 
 class Blog(View):
 
-    @method_decorator(cache_page(60*5))
+    # TODO change cache 
+
+    # @method_decorator(cache_page(60*5))
     def get(self, request):
         get_id = request.GET.get('id', None)
         if get_id:
@@ -79,7 +81,7 @@ class Blog(View):
 
 
 class Trap(View):
-    @method_decorator(cache_page(60*5))
+    # @method_decorator(cache_page(60*5))
     def get(self, request):
 
         get_id = request.GET.get('id', None)

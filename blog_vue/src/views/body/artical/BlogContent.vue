@@ -1,7 +1,7 @@
 // dependency: 
 // 
 <template>
-  <div class="col-12 col-md-9">
+  <div class="col-12 col-md-9" :key="$route.params.blogId">
     <go-back></go-back>
     <mavon-editor
       class="blog-content"
@@ -36,7 +36,7 @@
     watch: {},
     methods: {},
     created() {},
-    mounted() {
+    activated() {
       getArtical(this.$route.params.blogId).then(response => {
         if (response.status != 200) {
           this.$router.replace("/404");
