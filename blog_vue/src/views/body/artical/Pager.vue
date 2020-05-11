@@ -7,10 +7,17 @@
         <i class="fa fa-angle-double-left"></i>
       </button>
     </li>
-    <li class="pager-item list-inline-item" v-for="(item, index) in pageNum" :key="index">
+    <li
+      class="list-inline-item"
+      :class="{'left-more':index<pageNum-1&&index>2&&index==curIndex,
+               'right-more':index<pageNum-3&&index>0&&index==curIndex
+                ||(index==1&&pageNum>4&&(curIndex==0||curIndex==pageNum-1))}"
+      v-for="(index) in displayList()"
+      :key="index"
+    >
       <button
         class="pager-box btn"
-        :class="{'cur-page':index==curIndex}"
+        :class="{'cur-page': index == curIndex}"
         @click="btnClick(index)"
       >{{index+1}}</button>
     </li>
@@ -46,7 +53,16 @@
     methods: {
       btnClick(index) {
         this.$emit("page-change", index);
-        this.$store.dispatch("scrollTo");
+        // this.$store.dispatch("scrollTo");
+      },
+      displayList() {
+        if (this.pageNum <= 4) {
+          return [...new Array(this.pageNum).keys()];
+        }
+        if (this.curIndex < this.pageNum - 2 && this.curIndex > 1) {
+          return [0, 1, this.curIndex, this.pageNum - 2, this.pageNum - 1];
+        }
+        return [0, 1, this.pageNum - 2, this.pageNum - 1];
       }
     },
     created() {},
@@ -78,5 +94,11 @@
     box-shadow: 0 0 3px #007bff80;
     color: #fff;
     font-weight: bold;
+  }
+  .left-more::before {
+    content: "... ";
+  }
+  .right-more::after {
+    content: " ...";
   }
 </style>
