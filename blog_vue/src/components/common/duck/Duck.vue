@@ -109,6 +109,9 @@
     },
     created() {},
     mounted() {
+      if (sessionStorage.getItem("duckKilled") >= 2) {
+        this.wanderTime = 400;
+      }
       this.wander();
       this.wanderTimmer = setInterval(this.wander, this.wanderTime);
     }
