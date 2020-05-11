@@ -11,3 +11,19 @@ export function postArtical(data, type = "blog") {
     }
   });
 }
+
+export function login(password, token = '') {
+  let data = { password }
+  if (token) {
+    data.token = token
+  }
+
+  return request({
+    url: "authorize/",
+    data,
+    method: 'post',
+    headers: {
+      "Content-Type": "application/json;"
+    }
+  });
+}

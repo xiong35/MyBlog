@@ -19,7 +19,6 @@ class BlogMeta(View):
 class Duck(View):
 
     def post(self, request):
-        print("\n\ndududu\n\n")
         duck = BlogMetaModel.objects.filter(key__contains='鸭').first()
         if duck:
             duck.update()

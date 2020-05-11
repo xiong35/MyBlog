@@ -47,6 +47,9 @@
           <li @click="submit" class="list-inline-item">
             <div class="text-center choice-box">提交</div>
           </li>
+          <li class="list-inline-item">
+            <input v-model="password" placeholder="请输入密码" class="form-control" type="text" />
+          </li>
         </ul>
       </div>
     </transition>
@@ -54,9 +57,10 @@
 </template>
 
 <script>
-  import { postArtical } from "network/admin";
-
+  import { postArtical, login } from "network/admin";
   import { getTags } from "network/artical";
+
+  import { setOrGetToken } from "components/common/methods/token";
 
   let config = {
     underline: true, // 下划线
@@ -81,7 +85,8 @@
         tags: [],
         showAll: false,
         type: "",
-        config
+        config,
+        password: ""
       };
     },
     computed: {
@@ -125,15 +130,30 @@
     watch: {},
     methods: {
       submit() {
-        postArtical(this.fmtData, this.type)
-          .then(response => {
-            alert(response.status == 200 ? "success!" : response.status);
-          })
-          .then(() => {
-            getTags().then(response => {
-              this.tags = response.data.reverse();
+        let fmtData = this.fmtData;
+        let type = this.type;
+        let token = setOrGetToken();
+
+        login(this.password, token).then(response => {
+          fmtData.token = response.token;
+          setOrGetToken(response.token);
+
+          postArtical(fmtData, type)
+            .then(response => {
+              if (response.status == 200) {
+                alert("成功!");
+              } else if (response.status == 401) {
+                alert("未登录!");
+              } else {
+                alert(response.status);
+              }
+            })
+            .then(() => {
+              getTags().then(response => {
+                this.tags = response.data.reverse();
+              });
             });
-          });
+        });
         this.type = "";
       }
     },
@@ -154,7 +174,7 @@
     cursor: pointer;
   }
   input {
-    width: 6rem;
+    width: 7rem;
   }
   .comfirm {
     width: 80%;

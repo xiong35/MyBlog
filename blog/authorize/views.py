@@ -12,23 +12,16 @@ import datetime as dt
 class Authorize(View):
 
     def get(self, request):
-        # remote_addr = request.META.get("REMOTE_ADDR")
-        # agent = request.META.get("HTTP_USER_AGENT")
-        # if not agent:
-        #     agent = 'none'
-        # token = gen_token(remote_addr, agent)
-
         return JsonResponse({1: 2})
 
     def post(self, request):
-        info = json.loads(request.body)
-
-        token = info.get('token')
-
         now = dt.datetime.now()
 
+        info = json.loads(request.body)
+        token = info.get('token')
+
         qs = Visiter.objects.filter(token=token).filter(
-            expire__lt=now).first()
+            expire__gt=now).first()
 
         if not qs:
             remote_addr = request.META.get("REMOTE_ADDR")
@@ -37,8 +30,9 @@ class Authorize(View):
                 agent = 'none'
             token = gen_token(remote_addr, agent)
             expire = now + dt.timedelta(days=1)
-
             qs = Visiter(token=token, expire=expire)
+        else:
+            return JsonResponse({'status': 200, "token": token})
 
         password = info.get('password')
         if password:
@@ -47,14 +41,13 @@ class Authorize(View):
 
         qs.save()
 
-        return JsonResponse({'status': 200})
+        return JsonResponse({'status': 200, "token": token})
 
 
 def gen_token(remote_addr, agent):
     t = str(time.time())
     token = hashlib.new(
         'md5', (t+remote_addr+agent).encode('utf-8')).hexdigest()
-    print(token)
     return token
 
 

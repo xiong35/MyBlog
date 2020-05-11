@@ -6,17 +6,32 @@ from .models import Blog as BlogModel
 from .models import ArticalTag
 from .models import Trap as TrapModel
 from meta.models import BlogMeta
+from authorize.models import Visiter
 
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 
 import json
+import datetime as dt
 
 
 def update_meta():
     artical_model = BlogMeta.objects.filter(key__contains='文章').first()
     if artical_model:
         artical_model.update()
+
+
+def check_auth(request):
+    now = dt.datetime.now()
+
+    info = json.loads(request.body)
+    token = info.get('token')
+
+    auth = Visiter.objects.filter(token=token).filter(
+        expire__gt=now).values().first().get('authority')
+    if auth == 'root':
+        return True
+    return False
 
 
 class Blog(View):
@@ -44,6 +59,9 @@ class Blog(View):
         return JsonResponse({'status': 200, 'data': json_data})
 
     def post(self, request):
+
+        if not check_auth(request):
+            return JsonResponse({"status": 401})
 
         info = json.loads(request.body)
 
@@ -87,6 +105,9 @@ class Trap(View):
 
     def post(self, request):
 
+        if not check_auth(request):
+            return JsonResponse({"status": 401})
+
         json_data = json.loads(request.body)
 
         tag_names = json_data.get("tag_names")
@@ -112,6 +133,10 @@ class Tag(View):
         return JsonResponse({"status": 200, "data": list(qs)})
 
     def post(self, request):
+
+        if not check_auth(request):
+            return JsonResponse({"status": 401})
+
         tag_names = json.loads(request.body).get("tag_names")
         for tag_name in tag_names:
             tag = ArticalTag(tag_name=tag_name)
