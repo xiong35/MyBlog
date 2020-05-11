@@ -13,5 +13,6 @@ module.exports = {
       .set("common", resolve("./src/common"))
       .set("network", resolve("./src/network"))
       .set("views", resolve("./src/views"));
-  }
+  },
+  outputDir: "/var/www/MyBlog/static"
 };
