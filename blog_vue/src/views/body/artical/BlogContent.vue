@@ -48,6 +48,7 @@
 </script>
 <style scoped>
   .blog-content {
+    z-index: 20 !important;
     width: 100% !important;
   }
 </style>

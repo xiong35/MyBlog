@@ -50,5 +50,6 @@
 <style scoped>
   .blog-content {
     width: 100% !important;
+    z-index: 20 !important;
   }
 </style>
