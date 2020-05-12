@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\PATHs\\PATHs\\python.exe",
+    "python.pythonPath": "/root/.virtualenvs/django/bin/python",
     "python.linting.pylintArgs": [
         "--load-plugins=pylint_django"
     ],
