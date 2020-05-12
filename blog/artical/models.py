@@ -25,10 +25,10 @@ class Trap(models.Model):
     class Meta:
         ordering = ["last_update"]
 
-    context = models.CharField(max_length=200, default='计算机相关问题',)
+    context = models.CharField(max_length=50, default='计算机相关问题',)
     problem = models.CharField(max_length=200, default='一个棘手的问题...')
-    solution = models.CharField(
-        max_length=700, default='我想到了一个绝妙的解决方法, 但是这里位置太小, 我写不下...')
+    solution = models.TextField(
+        max_length=1000, default='我想到了一个绝妙的解决方法, 但是这里位置太小, 我写不下...')
     last_update = models.DateTimeField(auto_now=True)
     tags = models.ManyToManyField(ArticalTag,)
 
