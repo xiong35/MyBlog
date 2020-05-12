@@ -2,11 +2,11 @@
 // font-awesome
 <template>
   <ul class="floatnav list-unstyled">
-    <li @click="$emit('toggle-f-nav')">
+    <!-- <li @click="$emit('toggle-f-nav')">
       <div class="nav-item">
         <i class="fa fa-bars"></i>
       </div>
-    </li>
+    </li> -->
     <li @click="toggleDuck" :class="{'kill-duck':$store.state.duckAlive}">
       <div class="nav-item">
         <transition name="toggle" mode="out-in">
@@ -99,5 +99,8 @@
   .toggle-enter,
   .toggle-leave-to {
     opacity: 0;
+  }
+  .floatnav{
+    z-index: 999;
   }
 </style>

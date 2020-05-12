@@ -14,5 +14,5 @@ module.exports = {
       .set("network", resolve("./src/network"))
       .set("views", resolve("./src/views"));
   },
-  outputDir: "/var/www/MyBlog/static"
+  outputDir: "/var/www/MyBlog/blog/static/vue"
 };

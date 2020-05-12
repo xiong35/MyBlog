@@ -19,7 +19,7 @@
 <script>
   let xiong35 = {
     name: "xiong35",
-    link: "http://www.xiong35.com/static/home/index.html"
+    link: "http://101.133.217.104/"
   };
   export default {
     name: "Contributer",
