@@ -25,10 +25,10 @@ class Trap(models.Model):
     class Meta:
         ordering = ["last_update"]
 
-    context = models.CharField(max_length=50, default='计算机相关问题',)
-    problem = models.CharField(max_length=200, default='一个棘手的问题...')
+    context = models.CharField(max_length=70, default='计算机相关问题',)
+    problem = models.CharField(max_length=210, default='一个棘手的问题...')
     solution = models.TextField(
-        max_length=1000, default='我想到了一个绝妙的解决方法, 但是这里位置太小, 我写不下...')
+        max_length=3000, default='我想到了一个绝妙的解决方法, 但是这里位置太小, 我写不下...')
     last_update = models.DateTimeField(auto_now=True)
     tags = models.ManyToManyField(ArticalTag,)
 
@@ -40,8 +40,8 @@ class Blog(models.Model):
     class Meta:
         ordering = ["last_update"]
     last_update = models.DateTimeField(auto_now=True)
-    content = models.TextField(max_length=5000)
-    headline = models.CharField(max_length=20)
+    content = models.TextField(max_length=10000)
+    headline = models.CharField(max_length=70)
 
     tags = models.ManyToManyField(ArticalTag)
 

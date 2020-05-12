@@ -4,3 +4,4 @@ blog/static
 *.log
 docs/config/access_nginx.log
 docs/config/uwsgi.log
+docs/config/uwsgi.pid
