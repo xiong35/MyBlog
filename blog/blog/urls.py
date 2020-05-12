@@ -16,12 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf.urls.static import static
+from blog import settings
+
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('artical/', include(('artical.urls', 'artical'), namespace='artical')),
-    path('authorize/', include(('authorize.urls', 'authorize'), namespace='authorize')),
-    path('me/', include(('me.urls', 'me'), namespace='me')),
-    path('my_app/', include(('my_app.urls', 'my_app'), namespace='my_app')),
-    path('upload/', include(('upload.urls', 'upload'), namespace='upload')),
-    path('meta/', include(('meta.urls', 'meta'), namespace='meta')),
-]
+    path('data/admin/', admin.site.urls),
+    path('data/artical/', include(('artical.urls', 'artical'), namespace='artical')),
+    path('data/authorize/',
+         include(('authorize.urls', 'authorize'), namespace='authorize')),
+    path('data/me/', include(('me.urls', 'me'), namespace='me')),
+    path('data/my_app/', include(('my_app.urls', 'my_app'), namespace='my_app')),
+    path('data/upload/', include(('upload.urls', 'upload'), namespace='upload')),
+    path('data/meta/', include(('meta.urls', 'meta'), namespace='meta')),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
