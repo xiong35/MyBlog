@@ -1,6 +1,6 @@
 import { request } from "./request";
 
-export function getArtical(id = '',type='blog') {
+export function getarticle(id = '',type='blog') {
   if (id) {
     id = "?id=" + id
   }

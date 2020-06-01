@@ -14,7 +14,7 @@
 
 <script>
   let links = [
-    { name: "文章", link: "/artical" },
+    { name: "文章", link: "/article" },
     { name: "简历", link: "/resume" },
     { name: "关于我", link: "/profile" },
     { name: "作品", link: "/works" }

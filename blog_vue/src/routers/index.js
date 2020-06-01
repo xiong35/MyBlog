@@ -3,9 +3,9 @@ import VueRouter from "vue-router";
 
 const Visiter = () => import("views/Visiter")
 
-const Artical = () => import("views/body/artical/Artical");
-const BlogContent = () => import("views/body/artical/BlogContent")
-const TrapContent = () => import("views/body/artical/TrapContent")
+const article = () => import("views/body/article/article");
+const BlogContent = () => import("views/body/article/BlogContent")
+const TrapContent = () => import("views/body/article/TrapContent")
 const Admin = () => import("views/admin/Admin")
 
 const NotYet = () => import("components/common/NotYet")
@@ -17,7 +17,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "",
-    redirect: "/artical"
+    redirect: "/article"
   },
   {
     path: '/admin',
@@ -36,8 +36,8 @@ const routes = [
         component: TrapContent
       },
       {
-        path: "/artical",
-        component: Artical
+        path: "/article",
+        component: article
       },
       {
         path: "/profile",

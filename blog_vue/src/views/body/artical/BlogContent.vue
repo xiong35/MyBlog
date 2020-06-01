@@ -19,7 +19,7 @@
 
 
 <script>
-  import { getArtical } from "network/artical";
+  import { getarticle } from "network/article";
   import GoBack from "@/components/common/GoBack";
 
   export default {
@@ -37,7 +37,7 @@
     methods: {},
     created() {},
     activated() {
-      getArtical(this.$route.params.blogId).then(response => {
+      getarticle(this.$route.params.blogId).then(response => {
         if (response.status != 200) {
           this.$router.replace("/404");
         }

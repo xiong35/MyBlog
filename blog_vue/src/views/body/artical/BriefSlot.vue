@@ -1,12 +1,12 @@
 // dependency: 
 // 
 <template>
-  <router-link tag="div" :to="{path: type+'/'+ artical.id}">
+  <router-link tag="div" :to="{path: type+'/'+ article.id}">
     <div class="back-border my-2">
       <div class="brief p-2">
         <slot></slot>
         <ul class="list-unstyled list-inline">
-          <li class="list-inline-item m-1" v-for="(tag, index) in artical.tags" :key="index">
+          <li class="list-inline-item m-1" v-for="(tag, index) in article.tags" :key="index">
             <div
               class="tag"
               :class="{'activeTag': $store.state.activeTags.indexOf(tag) != -1 }"
@@ -15,7 +15,7 @@
           </li>
         </ul>
         <div class="time text-secondary">
-          <span>上次修改于：{{getFmtDate(artical.last_update)}}</span>
+          <span>上次修改于：{{getFmtDate(article.last_update)}}</span>
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@
     name: "BriefSlot",
     components: {},
     props: {
-      artical: {
+      article: {
         type: Object,
         default: {}
       },

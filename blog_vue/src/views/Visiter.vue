@@ -1,5 +1,5 @@
 <template>
-  <div @click="callPartical" id="visiter">
+  <div @click="callParticle" id="visiter">
     <blog-header />
     <hr />
     <div class="container">
@@ -12,7 +12,7 @@
       <blog-footer />
     </div>
 
-    <partical ref="partical"></partical>
+    <particle ref="particle"></particle>
     <duck ref="duck" />
     <float-nav />
   </div>
@@ -21,10 +21,10 @@
 <script>
   import BlogHeader from "views/header/Header";
   import BlogAside from "views/aside/Aside";
-  import BlogArtical from "views/body/artical/Artical";
+  import Blogarticle from "views/body/article/article";
   import BlogFooter from "views/footer/Footer";
 
-  import Partical from "@/components/common/partical/Partical";
+  import Particle from "@/components/common/particle/Particle";
   import Duck from "@/components/common/duck/Duck";
   import FloatNav from "@/components/context/floatNav/FloatNav";
 
@@ -33,15 +33,15 @@
     components: {
       BlogHeader,
       BlogAside,
-      BlogArtical,
+      Blogarticle,
       BlogFooter,
-      Partical,
+      Particle,
       Duck,
       FloatNav
     },
     methods: {
-      callPartical(event) {
-        this.$refs.partical.fatherClick(event);
+      callParticle(event) {
+        this.$refs.particle.fatherClick(event);
       }
     }
   };

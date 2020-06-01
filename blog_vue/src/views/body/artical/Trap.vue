@@ -4,20 +4,20 @@
   <div class="trap">
     <div
       class="text-center m-5 text-secondary"
-      v-show="pagedArticals.length==0"
+      v-show="pagedarticles.length==0"
       key="placeholder"
     >没有记录呢QwQ</div>
 
     <transition-group name="brief-list" tag="ul" class="list-unstyled">
       <brief-slot
         class="brief-item"
-        v-for="(artical, index) in pagedArticals"
+        v-for="(article, index) in pagedarticles"
         :key="index"
-        :artical="artical"
+        :article="article"
         :type="'trap'"
       >
-        <h4>{{artical.context}}</h4>
-        <p>{{artical.problem.length>20?artical.problem.slice(0,20)+'...':artical.problem}}</p>
+        <h4>{{article.context}}</h4>
+        <p>{{article.problem.length>20?article.problem.slice(0,20)+'...':article.problem}}</p>
       </brief-slot>
     </transition-group>
 
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import { getArtical } from "network/artical";
+  import { getarticle } from "network/article";
 
   import BriefSlot from "./BriefSlot";
   import Pager from "./Pager";
@@ -46,7 +46,7 @@
       };
     },
     computed: {
-      filteredArticals() {
+      filteredarticles() {
         return this.traps.filter((value, index, array) => {
           for (let tag of this.$store.state.activeTags) {
             if (value.tags.indexOf(tag) == -1) {
@@ -65,7 +65,7 @@
     methods: {},
     created() {},
     mounted() {
-      getArtical("", "trap").then(response => {
+      getarticle("", "trap").then(response => {
         // console.log(this.traps);
         // console.log(response);
         this.traps = response.data;
