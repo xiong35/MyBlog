@@ -17,7 +17,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "",
-    redirect: "/artical"
+    redirect: "/article"
   },
   {
     path: '/admin',
@@ -36,7 +36,7 @@ const routes = [
         component: TrapContent
       },
       {
-        path: "/artical",
+        path: "/article",
         component: Article
       },
       {
