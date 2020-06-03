@@ -21,7 +21,7 @@
 <script>
   import BlogHeader from "views/header/Header";
   import BlogAside from "views/aside/Aside";
-  import Blogarticle from "views/body/article/article";
+  import Blogarticle from "views/body/article/Article";
   import BlogFooter from "views/footer/Footer";
 
   import Particle from "@/components/common/particle/Particle";

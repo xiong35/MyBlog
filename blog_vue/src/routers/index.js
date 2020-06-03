@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 
 const Visiter = () => import("views/Visiter")
 
-const article = () => import("views/body/article/article");
+const Article = () => import("views/body/article/Article");
 const BlogContent = () => import("views/body/article/BlogContent")
 const TrapContent = () => import("views/body/article/TrapContent")
 const Admin = () => import("views/admin/Admin")
@@ -17,7 +17,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "",
-    redirect: "/article"
+    redirect: "/artical"
   },
   {
     path: '/admin',
@@ -36,8 +36,8 @@ const routes = [
         component: TrapContent
       },
       {
-        path: "/article",
-        component: article
+        path: "/artical",
+        component: Article
       },
       {
         path: "/profile",
