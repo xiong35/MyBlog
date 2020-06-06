@@ -1,9 +1,9 @@
 // dependency: 
 // font-awesome
 <template>
-  <div class="partical">
+  <div class="particle">
     <div
-      v-for="(item, index) in particals"
+      v-for="(item, index) in particles"
       :key="index"
       :style="{top:item.top+'px',left:item.left+'px',fontSize:item.fontSize}"
     >
@@ -16,16 +16,16 @@
   let V = 10;
   let interval = 10;
   let G = 0.3;
-  let particalNum = 14;
+  let particleNum = 14;
   let duringTime = 1000;
 
   export default {
-    name: "Partical",
+    name: "Particle",
     components: {},
     data() {
       return {
         click: { x: 0, y: 0 },
-        particals: [],
+        particles: [],
         spreadTimer: null,
         spreader: 0
       };
@@ -37,12 +37,12 @@
         let x = event.clientX -2;
         let y = event.clientY - 25;
         let added = 0;
-        while (added < particalNum) {
+        while (added < particleNum) {
           let vx = (Math.random() - 0.5) * V;
           let vy = (Math.random() - 0.84) * V;
           let fontSize = (Math.random() + 0.28) * 35 + "px";
-          let curPartical = { top: y, left: x, fontSize, vx, vy };
-          this.particals.push(curPartical);
+          let curParticle = { top: y, left: x, fontSize, vx, vy };
+          this.particles.push(curParticle);
           added++;
         }
         this.spread();
@@ -51,7 +51,7 @@
         this.clear();
         this.spreader++;
         this.spreadTimer = setInterval(() => {
-          this.particals.forEach(item => {
+          this.particles.forEach(item => {
             item.vy += G;
             item.top += item.vy;
             item.left += item.vx;
@@ -62,7 +62,7 @@
           if (this.spreader == 0) {
             this.clear();
           }
-          this.particals.splice(0, particalNum);
+          this.particles.splice(0, particleNum);
           this.isSpreading = false;
         }, duringTime);
       },

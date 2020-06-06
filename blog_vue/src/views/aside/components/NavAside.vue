@@ -1,37 +1,53 @@
-// dependency: 
-// 
+// dependency: //
 <template>
   <ul class="list-unstyled">
-    <li class="m-3 nav-aside-li" v-for="(item, index) in links" :key="index">
+    <li class="m-3 nav-aside-li">
       <div class="x-v"></div>
       <div class="x-h"></div>
       <div class="y-v"></div>
       <div class="y-h"></div>
-      <router-link tag="div" class="nav-aside-div" :to="item.link">{{item.name}}</router-link>
+      <router-link tag="div" class="nav-aside-div" to="/article">
+        文章
+      </router-link>
+    </li>
+    <li class="m-3 nav-aside-li">
+      <div class="x-v"></div>
+      <div class="x-h"></div>
+      <div class="y-v"></div>
+      <div class="y-h"></div>
+      <div
+        class="nav-aside-div"
+        @click="openWindow('http://xiong35.cn/static_blog/about')"
+      >
+        关于我
+      </div>
     </li>
   </ul>
 </template>
 
 <script>
   let links = [
-    { name: "文章", link: "/artical" },
-    { name: "简历", link: "/resume" },
-    { name: "关于我", link: "/profile" },
-    { name: "作品", link: "/works" }
+    // { name: "文章", link: "/article" },
+    // { name: "简历", link: "http://xiong35.cn/static_blog/about" },
+    { name: "关于我", link: "http://xiong35.cn/static_blog/about" },
   ];
   export default {
     name: "NavAside",
     components: {},
     data() {
       return {
-        links
+        links,
       };
     },
     computed: {},
     watch: {},
-    methods: {},
+    methods: {
+      openWindow(url) {
+        window.open(url);
+      },
+    },
     created() {},
-    mounted() {}
+    mounted() {},
   };
 </script>
 <style scoped>

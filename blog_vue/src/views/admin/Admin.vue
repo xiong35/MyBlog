@@ -57,8 +57,8 @@
 </template>
 
 <script>
-  import { postArtical, login } from "network/admin";
-  import { getTags } from "network/artical";
+  import { postarticle, login } from "network/admin";
+  import { getTags } from "network/article";
 
   import { setOrGetToken } from "components/common/methods/token";
 
@@ -140,7 +140,7 @@
           fmtData.token = response.token;
           setOrGetToken(response.token);
 
-          postArtical(fmtData, type)
+          postarticle(fmtData, type)
             .then(response => {
               if (response.status == 200) {
                 alert("成功!");

@@ -1,5 +1,5 @@
 <template>
-  <div v-title data-title="Artical" class="col-12 col-md-9" id="artical">
+  <div v-title data-title="article" class="col-12 col-md-9" id="article">
     <ul class="nav nav-tabs my-2">
       <li class="nav-item" v-for="(item, index) in ['文章','踩坑记录']" :key="index">
         <big
@@ -14,7 +14,7 @@
       <li
         class="list-inline-item m-1 tag"
         v-for="(tag, index) in shownTags"
-        :key="index+'artical'"
+        :key="index+'article'"
         :class="{'activeTag': $store.state.activeTags.indexOf(tag.tag_name) != -1 }"
         @click="$store.commit('toggleActiveTag',tag.tag_name)"
       >{{tag.tag_name}}</li>
@@ -31,10 +31,10 @@
   import Blog from "./Blog";
   import Trap from "./Trap";
 
-  import { getTags } from "network/artical";
+  import { getTags } from "network/article";
 
   export default {
-    name: "Artical",
+    name: "article",
     components: {
       Blog,
       Trap
@@ -64,7 +64,7 @@
   };
 </script>
 <style>
-  #artical {
+  #article {
     width: 100%;
   }
   .nav-tabs,

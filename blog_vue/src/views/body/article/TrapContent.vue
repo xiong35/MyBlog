@@ -1,11 +1,11 @@
 // dependency: 
 // 
 <template>
-  <div class="col-12 col-md-9" :key="$route.params.blogId">
+  <div class="col-12 col-md-9" :key="$route.params.trapId+'trap'">
     <go-back></go-back>
     <mavon-editor
       class="blog-content"
-      :value="blogContent"
+      :value="trap.solution"
       :subfield="false"
       :defaultOpen="'preview'"
       :toolbarsFlag="false"
@@ -19,36 +19,37 @@
 
 
 <script>
-  import { getArtical } from "network/artical";
+  import { getarticle } from "network/article";
   import GoBack from "@/components/common/GoBack";
 
   export default {
-    name: "BlogContent",
+    name: "TrapContent",
     components: {
       GoBack
     },
     data() {
       return {
-        blogContent: "加载中"
+        trap: {}
       };
     },
-    computed: {},
+    computed: {
+    },
     watch: {},
     methods: {},
     created() {},
     activated() {
-      getArtical(this.$route.params.blogId).then(response => {
+      getarticle(this.$route.params.trapId, "trap").then(response => {
         if (response.status != 200) {
           this.$router.replace("/404");
         }
-        this.blogContent = response.content.content;
+        this.trap = response.data;
       });
     }
   };
 </script>
 <style scoped>
   .blog-content {
-    z-index: 20 !important;
     width: 100% !important;
+    z-index: 20 !important;
   }
 </style>

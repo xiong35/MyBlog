@@ -16,12 +16,12 @@ export var PagerMixin = {
     }
   },
   computed: {
-    pagedArticals() {
+    pagedarticles() {
       let begin = this.curIndex * this.perPage;
-      return this.filteredArticals.slice(begin, begin + this.perPage);
+      return this.filteredarticles.slice(begin, begin + this.perPage);
     },
     pageNum() {
-      return Math.ceil(this.filteredArticals.length / this.perPage);
+      return Math.ceil(this.filteredarticles.length / this.perPage);
     }
   }
 }

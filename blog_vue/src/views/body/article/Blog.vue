@@ -4,15 +4,15 @@
   <div class="blog">
     <div
       class="text-center m-5 text-secondary"
-      v-show="pagedArticals.length==0"
+      v-show="pagedarticles.length==0"
       key="placeholder"
     >没有文章呢QwQ</div>
     <transition-group name="brief-list" tag="ul" class="list-unstyled">
       <brief-slot
         class="brief-item"
-        v-for="(blog, index) in pagedArticals"
+        v-for="(blog, index) in pagedarticles"
         :key="index"
-        :artical="blog"
+        :article="blog"
       >
         <h3>{{blog.headline}}</h3>
       </brief-slot>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import { getArtical } from "network/artical";
+  import { getarticle } from "network/article";
 
   import BriefSlot from "./BriefSlot";
   import Pager from "./Pager";
@@ -43,7 +43,7 @@
       };
     },
     computed: {
-      filteredArticals() {
+      filteredarticles() {
         return this.blogs.filter((value, index, array) => {
           for (let tag of this.$store.state.activeTags) {
             if (value.tags.indexOf(tag) == -1) {
@@ -62,7 +62,7 @@
     methods: {},
     created() {},
     mounted() {
-      getArtical().then(response => {
+      getarticle().then(response => {
         this.blogs = response.data;
       });
     }
