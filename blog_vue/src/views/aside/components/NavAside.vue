@@ -17,7 +17,7 @@
       <div class="y-h"></div>
       <div
         class="nav-aside-div"
-        @click="openWindow('http://xiong35.cn/static_blog/about')"
+        @click="openWindow('http://xiong35.cn/about')"
       >
         关于我
       </div>
@@ -28,8 +28,8 @@
 <script>
   let links = [
     // { name: "文章", link: "/article" },
-    // { name: "简历", link: "http://xiong35.cn/static_blog/about" },
-    { name: "关于我", link: "http://xiong35.cn/static_blog/about" },
+    // { name: "简历", link: "http://xiong35.cn/about" },
+    { name: "关于我", link: "http://xiong35.cn/about" },
   ];
   export default {
     name: "NavAside",
