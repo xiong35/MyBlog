@@ -2,13 +2,12 @@ import { request } from "./request";
 
 export function getMeta() {
   return request({
-    url: "meta/"
+    url: "meta"
   });
 }
 
 export function commitKill() {
   return request({
-    url: "meta/duck/",
-    method: 'post',
+    url: "meta/duck",
   })
 }

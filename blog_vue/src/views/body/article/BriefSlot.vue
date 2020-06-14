@@ -1,21 +1,28 @@
-// dependency: 
-// 
+// dependency: //
 <template>
-  <router-link tag="div" :to="{path: type+'/'+ article.id}">
+  <router-link tag="div" :to="{ path: type + '/' + article.ID }">
     <div class="back-border my-2">
       <div class="brief p-2">
         <slot></slot>
         <ul class="list-unstyled list-inline">
-          <li class="list-inline-item m-1" v-for="(tag, index) in article.tags" :key="index">
+          <li
+            class="list-inline-item m-1"
+            v-for="(tag, index) in article.Tags"
+            :key="index"
+          >
             <div
               class="tag"
-              :class="{'activeTag': $store.state.activeTags.indexOf(tag) != -1 }"
-              @click.stop="$store.commit('toggleActiveTag',tag)"
-            >{{tag}}</div>
+              :class="{
+                activeTag: $store.state.activeTags.indexOf(tag.TagName) != -1,
+              }"
+              @click.stop="$store.commit('toggleActiveTag', tag.TagName)"
+            >
+              {{ tag.TagName }}
+            </div>
           </li>
         </ul>
         <div class="time text-secondary">
-          <span>上次修改于：{{getFmtDate(article.last_update)}}</span>
+          <span>上次修改于：{{ getFmtDate(article.UpdatedAt) }}</span>
         </div>
       </div>
     </div>
@@ -31,12 +38,12 @@
     props: {
       article: {
         type: Object,
-        default: {}
+        default: {},
       },
       type: {
         type: String,
-        default: "blog"
-      }
+        default: "blog",
+      },
     },
     computed: {},
     methods: {
@@ -44,9 +51,9 @@
       dateFormat,
       getFmtDate(dataStr) {
         return dateFormat("YYYY年mm月dd日 HH:MM", this.parseTime(dataStr));
-      }
+      },
     },
-    mounted() {}
+    mounted() {},
   };
 </script>
 <style scoped>

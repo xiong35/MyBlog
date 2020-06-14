@@ -1,16 +1,16 @@
 import { request } from "./request";
 
-export function getarticle(id = '',type='blog') {
+export function getArticle(id = '',type='blog') {
   if (id) {
     id = "?id=" + id
   }
   return request({
-    url: `artical/${type}/` + id
+    url: `articles/${type}` + id
   });
 }
 
 export function getTags() {
   return request({
-    url: "artical/tags/"
+    url: "articles/tags"
   });
 }

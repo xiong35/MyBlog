@@ -1,12 +1,13 @@
-// dependency: 
-// 
+// dependency: //
 <template>
   <div class="blog">
     <div
       class="text-center m-5 text-secondary"
-      v-show="pagedarticles.length==0"
+      v-show="pagedarticles.length == 0"
       key="placeholder"
-    >没有文章呢QwQ</div>
+    >
+      没有文章呢QwQ
+    </div>
     <transition-group name="brief-list" tag="ul" class="list-unstyled">
       <brief-slot
         class="brief-item"
@@ -14,16 +15,20 @@
         :key="index"
         :article="blog"
       >
-        <h3>{{blog.headline}}</h3>
+        <h3>{{ blog.Headline | clip }}</h3>
       </brief-slot>
     </transition-group>
 
-    <pager @page-change="changePage" :pageNum="pageNum" :curIndex="curIndex"></pager>
+    <pager
+      @page-change="changePage"
+      :pageNum="pageNum"
+      :curIndex="curIndex"
+    ></pager>
   </div>
 </template>
 
 <script>
-  import { getarticle } from "network/article";
+  import { getArticle } from "network/article";
 
   import BriefSlot from "./BriefSlot";
   import Pager from "./Pager";
@@ -35,38 +40,57 @@
     name: "Blog",
     components: {
       BriefSlot,
-      Pager
+      Pager,
     },
+    props: ["type"],
     data() {
       return {
-        blogs: []
+        blogs: [],
       };
     },
     computed: {
       filteredarticles() {
+        if (this.blogs.length == 0) {
+          return [];
+        }
         return this.blogs.filter((value, index, array) => {
           for (let tag of this.$store.state.activeTags) {
-            if (value.tags.indexOf(tag) == -1) {
+            if (value.Tags.map((it) => it.TagName).indexOf(tag) == -1) {
               return false;
             }
           }
           return true;
         });
-      }
+      },
     },
     watch: {
-      "$store.state.activeTags": function() {
+      "$store.state.activeTags": function () {
         this.curIndex = 0;
-      }
+      },
+    },
+    filters: {
+      clip(value) {
+        if (value.length >= 45) {
+          return value.slice(0, 44) + "...";
+        } else {
+          return value;
+        }
+      },
     },
     methods: {},
     created() {},
+    watch: {
+      type() {
+        getArticle("", this.type).then((response) => {
+          this.blogs = response.data;
+        });
+      },
+    },
     mounted() {
-      getarticle().then(response => {
+      getArticle("", this.type).then((response) => {
         this.blogs = response.data;
       });
-    }
+    },
   };
 </script>
-<style scoped>
-</style>
+<style scoped></style>

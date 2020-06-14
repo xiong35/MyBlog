@@ -8,19 +8,14 @@
       >
     </p>
     <a
+      class="text-secondary"
       href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102003909"
-      ><img src="~/assets/img/beian.png" style="float: left;" />
-      <p
-        style="
-          float: left;
-          height: 20px;
-          line-height: 20px;
-          margin: 0px 0px 0px 5px;
-          color: #939393;
-        "
-      >
-        鄂公网安备 42011102003909号
-      </p>
+    >
+      <img
+        src="~/assets/img/beian.png"
+        style="height: 1rem; width: 1rem;"
+      />
+      鄂公网安备 42011102003909号
     </a>
   </div>
 </template>

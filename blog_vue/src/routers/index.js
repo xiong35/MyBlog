@@ -5,7 +5,6 @@ const Visiter = () => import("views/Visiter")
 
 const Article = () => import("views/body/article/Article");
 const BlogContent = () => import("views/body/article/BlogContent")
-const TrapContent = () => import("views/body/article/TrapContent")
 const Admin = () => import("views/admin/Admin")
 
 const NotYet = () => import("components/common/NotYet")
@@ -33,7 +32,7 @@ const routes = [
       },
       {
         path: "/trap/:trapId",
-        component: TrapContent
+        component: BlogContent
       },
       {
         path: "/article",

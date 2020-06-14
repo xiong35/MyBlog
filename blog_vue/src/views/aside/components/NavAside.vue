@@ -17,7 +17,7 @@
       <div class="y-h"></div>
       <div
         class="nav-aside-div"
-        @click="openWindow('http://xiong35.cn/about')"
+        @click="openWindow('http://www.xiong35.cn/blog2.0/about')"
       >
         关于我
       </div>

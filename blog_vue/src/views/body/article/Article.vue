@@ -1,35 +1,56 @@
 <template>
   <div v-title data-title="article" class="col-12 col-md-9" id="article">
     <ul class="nav nav-tabs my-2">
-      <li class="nav-item" v-for="(item, index) in ['文章','踩坑记录']" :key="index">
+      <li
+        class="nav-item"
+        v-for="(item, index) in ['文章', '踩坑记录']"
+        :key="index"
+      >
         <big
           class="nav-link"
-          :class="{'active':activeIndex==index}"
-          @click="activeIndex=index"
-        >{{item}}</big>
+          :class="{ active: activeIndex == index }"
+          @click="activeIndex = index"
+          >{{ item }}</big
+        >
       </li>
     </ul>
 
-    <transition-group name="tag-ul" tag="ul" class="tag-list p-2 list-inline">
+    <transition-group
+      name="tag-ul"
+      tag="ul"
+      class="tag-list p-2 list-inline"
+    >
       <li
         class="list-inline-item m-1 tag"
         v-for="(tag, index) in shownTags"
-        :key="index+'article'"
-        :class="{'activeTag': $store.state.activeTags.indexOf(tag.tag_name) != -1 }"
-        @click="$store.commit('toggleActiveTag',tag.tag_name)"
-      >{{tag.tag_name}}</li>
-      <li class="list-inline-item m-1 tag toggle-tags" key="toggle" @click="showAll = !showAll">
-        {{!showAll?'更多':'收起'}}
-        <i class="fa fa-angle-double-down" :class="{'toggle-up':showAll}"></i>
+        :key="index + 'article'"
+        :class="{
+          activeTag: $store.state.activeTags.indexOf(tag.tag_name) != -1,
+        }"
+        @click="$store.commit('toggleActiveTag', tag.tag_name)"
+      >
+        {{ tag.tag_name }}
+      </li>
+      <li
+        class="list-inline-item m-1 tag toggle-tags"
+        key="toggle"
+        @click="showAll = !showAll"
+      >
+        {{ !showAll ? "更多" : "收起" }}
+        <i
+          class="fa fa-angle-double-down"
+          :class="{ 'toggle-up': showAll }"
+        ></i>
       </li>
     </transition-group>
-    <div :is="['blog','trap'][activeIndex]"></div>
+    <keep-alive>
+      <Blog :type='["blog", "trap"][activeIndex]' />
+    </keep-alive>
   </div>
 </template>
 
 <script>
   import Blog from "./Blog";
-  import Trap from "./Trap";
 
   import { getTags } from "network/article";
 
@@ -37,13 +58,12 @@
     name: "article",
     components: {
       Blog,
-      Trap
     },
     data() {
       return {
         tags: [],
         showAll: false,
-        activeIndex: 0
+        activeIndex: 0,
       };
     },
     computed: {
@@ -52,15 +72,15 @@
           return this.tags;
         }
         return this.tags.slice(0, 4);
-      }
+      },
     },
     watch: {},
     methods: {},
     mounted() {
-      getTags().then(response => {
+      getTags().then((response) => {
         this.tags = response.data.reverse();
       });
-    }
+    },
   };
 </script>
 <style>

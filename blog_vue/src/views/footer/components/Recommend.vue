@@ -33,8 +33,8 @@
     },
     {
       name: "Xiong35",
-      discription: "我的另一个博客页面hhhhh",
-      href: "http://xiong35.cn/static_blog/",
+      discription: "我的2.0版本博客页面hhhhh",
+      href: "http://www.xiong35.cn/",
     },
   ];
   export default {
